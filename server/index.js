@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import Amadeus from "amadeus"
+import {airportSearch} from "./controllers/airportSearch.js"
 
 // OMGGGGGGG
 dotenv.config()
@@ -15,10 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 // getting auth from amadeus
 const CLIENT_ID = process.env.API_KEY
 const SECRET = process.env.API_SECRET
-const amadeus = new Amadeus({
+export const amadeus = new Amadeus({
     clientId: CLIENT_ID,
     clientSecret: SECRET
 });
+
+airportSearch()
 
 // example
 // amadeus.client.get('/v1/reference-data/locations', { subType: 'AIRPORT', keyword: 'New York'}).then(function(response){
@@ -27,11 +30,11 @@ const amadeus = new Amadeus({
 //     console.log(responseError.code);
 // });
 
-amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: "YYZ", destinationLocationCode: "HND", departureDate: "2024-05-31", adults: 1}).then(function(response){
-    console.log(response.data);
-  }).catch(function(responseError){
-    console.log(responseError);
-});
+// amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: "YYZ", destinationLocationCode: "HND", departureDate: "2024-05-31", adults: 1}).then(function(response){
+//     console.log(response.data);
+//   }).catch(function(responseError){
+//     console.log(responseError);
+// });
 
 const PORT = 5000
 app.listen(PORT, () => {
