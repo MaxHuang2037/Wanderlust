@@ -1,0 +1,30 @@
+.navbar{
+    display: flex;
+    Justify-content: space-between;
+    align-items: center;
+    border-bottom: solid;
+    width: 99vw;
+    padding: 0rem 1rem 1rem 1rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.img{
+    width: 100px;
+}
+
+.links{
+    font-size: 15px;
+}
+
+.signin{
+    font-size: 15px;
+}
+
+.home{
+    font-size: 40px;
+}

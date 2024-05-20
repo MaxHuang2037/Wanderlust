@@ -1,7 +1,7 @@
 export const Footer = () => {
     return(
         <footer>
-            I LIKE FEET
+            This is the footer
         </footer>
     )
 }
