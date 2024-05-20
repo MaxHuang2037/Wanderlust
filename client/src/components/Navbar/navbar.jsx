@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import styles from "./styles.module.css"
-import logo from "./templogo.png"
 
 export const Navbar = () => {
     return(
@@ -9,14 +8,14 @@ export const Navbar = () => {
                 <Link to="/">
                         <button className={styles.home}>Wanderlust</button>
                 </Link>
-                <img src={logo} alt="logo" className={styles.img}/>
+                {/* <img src={logo} alt="logo" className={styles.img}/> */}
             </div>
-            <div>
-                <Link to="/stays">
-                    <button className={styles.links}>Stays</button>
-                </Link>
+            <div className={styles.right}>
                 <Link to="/flights">
                     <button className={styles.links}>Flights</button>
+                </Link>
+                <Link to="/stays">
+                    <button className={styles.links}>Stays</button>
                 </Link>
                 <Link to="/things-to-do">
                     <button className={styles.links}>Things to do</button>

@@ -2,11 +2,15 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #4D869C;
+    background-color: #EEF7FF;
 }
 
 button{
     border: none;
     background: none;
+    color: #4D869C;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 button:hover{

@@ -1,14 +1,22 @@
 .navbar{
+    position: sticky;
+    top: 0;
     display: flex;
     Justify-content: space-between;
     align-items: center;
-    border-bottom: solid;
-    width: 99vw;
-    padding: 0rem 1rem 1rem 1rem;
-    margin: 0.5rem 0 1rem 0;
+    margin: 0 0 1rem 0;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background-image: linear-gradient(#befff9, #EEF7FF);
+}
+
+.right{
+    margin-right: 1rem;
 }
 
 .logo{
+    margin-left: 1rem;
     display: flex;
     align-items: center;
 }
@@ -19,6 +27,7 @@
 
 .links{
     font-size: 15px;
+    margin-right: 1rem;
 }
 
 .signin{
