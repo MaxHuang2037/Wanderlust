@@ -9,9 +9,9 @@ export const airportSearch = async(req, res) => {
                 //console.log(airport.iataCode)
                 iataCodes.push(airport.iataCode);
             });
-            res.status(200).json({codes: iataCodes});
+            // res.status(200).json({codes: iataCodes});
             
         }).catch(function(responseError){
-            res.status(responseError.code);
+            // res.status(responseError.code);
         })
 }

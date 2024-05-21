@@ -1,7 +1,10 @@
 import express from "express"
 import dotenv from "dotenv"
 import Amadeus from "amadeus"
+import mongoose from "mongoose"
 import {airportSearch} from "./controllers/airportSearch.js"
+import { flightSearch } from "./controllers/flightSearch.js"
+import userRoutes from "./routes/users.js"
 
 // OMGGGGGGG
 dotenv.config()
@@ -21,22 +24,15 @@ export const amadeus = new Amadeus({
     clientSecret: SECRET
 });
 
-airportSearch()
+// airportSearch()
+flightSearch()
+app.use("/users", userRoutes)
 
-// example
-// amadeus.client.get('/v1/reference-data/locations', { subType: 'AIRPORT', keyword: 'New York'}).then(function(response){
-//     console.log(response.data);
-//   }).catch(function(responseError){
-//     console.log(responseError.code);
-// });
-
-// amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: "YYZ", destinationLocationCode: "HND", departureDate: "2024-05-31", adults: 1}).then(function(response){
-//     console.log(response.data);
-//   }).catch(function(responseError){
-//     console.log(responseError);
-// });
-
+const URI = process.env.MONGO_URI
 const PORT = 5000
-app.listen(PORT, () => {
+
+mongoose.connect(URI, {dbName: 'wanderlust'}).then(() => app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
+})).catch((err) => {
+    console.log(err.message)
 })

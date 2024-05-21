@@ -1,6 +1,7 @@
 .footer{
     display: flex;
     background-color: #CDE8E5;
+    margin-top: auto;
 }
 
 p{

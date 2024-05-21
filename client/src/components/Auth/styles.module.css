@@ -1,0 +1,21 @@
+section{
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+    align-items: center;
+    background-color: #CDE8E5;
+    margin-bottom: 10rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+input{
+    margin-top: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
