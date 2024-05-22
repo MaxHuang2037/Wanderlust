@@ -12,6 +12,8 @@
 }
 
 .right{
+    display: flex;
+    align-items: center;
     margin-right: 1rem;
 }
 
@@ -36,4 +38,19 @@
 
 .home{
     font-size: 40px;
+}
+
+.loggedIn{
+    display: flex;
+    align-items: center;
+}
+
+.pfp{
+    width: 35px;
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.username{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 30px;
 }

@@ -4,6 +4,7 @@ import Amadeus from "amadeus"
 import mongoose from "mongoose"
 import {airportSearch} from "./controllers/airportSearch.js"
 import { flightSearch } from "./controllers/flightSearch.js"
+import { hotelListCity, hotelListGeo } from "./controllers/hotelList.js"
 import userRoutes from "./routes/users.js"
 
 // OMGGGGGGG
@@ -25,7 +26,9 @@ export const amadeus = new Amadeus({
 });
 
 // airportSearch()
-flightSearch()
+// flightSearch()
+// hotelListGeo()
+
 app.use("/users", userRoutes)
 
 const URI = process.env.MONGO_URI

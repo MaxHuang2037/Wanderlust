@@ -2,22 +2,23 @@ import { useState } from "react"
 import Input from "./Input"
 import styles from "./styles.module.css"
 import {useDispatch} from "react-redux"
+import { signUp, signIn } from "../../features/userSlice"
 
 const initialState = {firstName: "", lastName: "", email: "", password: "", confirmPassword: ""}
 
 export const Auth = () => {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState(false)
     const [isSignup, setSignUp] = useState(false)
     const [formData, setFormData] = useState(initialState)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if(isSignup) {
-        //     dispatch(signUp(formData))
-        // } else {
-        //     dispatch(signIn(formData))
-        // }
+        if(isSignup) {
+            dispatch(signUp(formData))
+        } else {
+            dispatch(signIn(formData))
+        }
     }
 
     const handleChange = (e) => {
@@ -29,7 +30,7 @@ export const Auth = () => {
     }
     return(
         <section>
-            <h1>{isSignup ? "Sign in" : "Sign up"}</h1>
+            <h1>{isSignup ? "Sign up" : "Sign in"}</h1>
             <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
                 {isSignup && (
                     <>
