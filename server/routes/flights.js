@@ -1,4 +1,9 @@
 import express from "express"
 const router = express.Router()
 
-router.get()
+import { airportSearch } from "../controllers/airportSearch.js"
+
+router
+.get("/airports", airportSearch)
+
+export default router

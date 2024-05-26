@@ -6,6 +6,7 @@ import {airportSearch} from "./controllers/airportSearch.js"
 import { flightSearch } from "./controllers/flightSearch.js"
 import { hotelListCity, hotelListGeo } from "./controllers/hotelList.js"
 import userRoutes from "./routes/users.js"
+import flightRoutes from "./routes/flights.js"
 
 // OMGGGGGGG
 dotenv.config()
@@ -30,6 +31,7 @@ export const amadeus = new Amadeus({
 // hotelListGeo()
 
 app.use("/users", userRoutes)
+app.use("/flights", flightRoutes)
 
 const URI = process.env.MONGO_URI
 const PORT = 5000
