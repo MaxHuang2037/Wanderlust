@@ -8,7 +8,7 @@ export const Input = () => {
     const [quantity, setQuantity] = useState(initialState)
 
     return(
-        <div className={styles.flights}>
+        <div>
             <section className={styles.section}>
                 <div>
                     <input type="radio" id="oneway" name="flight_type" checked/>
