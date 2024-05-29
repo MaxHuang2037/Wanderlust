@@ -12,12 +12,12 @@ export const Input = () => {
         <div>
             <section className={styles.section}>
                 <div>
-                    <input type="radio" id="oneway" name="flight_type" checked/>
-                    <label for="oneway">One way</label>
+                    <input type="radio" id="oneway" name="flight_type" defaultChecked="true"/>
+                    <label htmlFor="oneway">One way</label>
                 </div>
                 <div>
                     <input type="radio" id="roundtrip" name="flight_type"/>
-                    <label for="Oneway">Round trip</label>
+                    <label htmlFor="Oneway">Round trip</label>
                 </div>
             </section>
             <section className={styles.section}>

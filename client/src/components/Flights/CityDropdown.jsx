@@ -8,8 +8,8 @@ export const CityDrodown = ({type}) => {
     const {airports_to, airports_from} = useSelector((state) => state.flight)
     const ph = (type == "from") ? "From (city)" : "To (city)"
 
-    const setCity = (city) => {
-        document.getElementById(type).value = city;
+    const setCity = (data) => {
+        document.getElementById(type).value = `${data.iataCode}: ${data.name}, ${data.stateCode}`;
         (type == "from") ? dispatch(clearAirportsFrom()) : dispatch(clearAirportsTo())
     }
 
@@ -19,9 +19,9 @@ export const CityDrodown = ({type}) => {
     }, [])
 
     return(
-        <div>
+        <div className={styles.airportdropdown}>
             <section className={styles.citiesInput}>
-                <input className={styles.input} id={type} type="text" placeholder={ph} onKeyUp={(e) => {
+                <input autoComplete="off" className={styles.input} id={type} type="text" placeholder={ph} onKeyUp={(e) => {
                     if(e.key === "Enter"){
                         dispatch(getAirports({cityName: document.getElementById(type).value, type: type}))
                     }
@@ -33,9 +33,9 @@ export const CityDrodown = ({type}) => {
             </section>
             <div className={styles.dropdown}>
                 {(type == "from") ? airports_from.map((data) => {
-                    return <p onClick={() => {setCity(data.name)}}>{data.iataCode}: {data.name}</p>
+                    return <p onClick={() => {setCity(data)}}>{data.iataCode}: {data.name}, {data.stateCode}</p>
                 }) : airports_to.map((data) => {
-                    return <p onClick={() => {setCity(data.name)}}>{data.iataCode}: {data.name}</p>
+                    return <p onClick={() => {setCity(data)}}>{data.iataCode}: {data.name}, {data.stateCode}</p>
                 })
             }
             </div>
