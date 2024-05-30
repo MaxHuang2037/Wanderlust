@@ -26,8 +26,8 @@ export const flightSearch = async(req, res) => {
             flights.push({price: price, segments: segs})
             console.log(flights)
         })
-    }).catch(function(responseError){
-        console.log(responseError);
+    }).catch(function(err){
+        res.status(err.code).json({message: err.message});
     });
 }
 

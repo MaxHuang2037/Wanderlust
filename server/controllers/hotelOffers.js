@@ -9,7 +9,7 @@ export const hotelOffers = async(req, res) => {
             offers.push({date: {checkIn: offer.checkInDate, checkOut: offers.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
         })
 
-    }).catch(function(responseError) {
-        //do something
+    }).catch(function(err) {
+        res.status(err.code).json({message: err.message});
     })
 }

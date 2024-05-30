@@ -14,7 +14,7 @@ export const CityDrodown = ({type}) => {
     }
 
     useEffect(() => {
-        clearAirportsFrom()
+        dispatch(clearAirportsFrom())
         dispatch(clearAirportsTo())
     }, [])
 
@@ -33,9 +33,15 @@ export const CityDrodown = ({type}) => {
             </section>
             <div className={styles.dropdown}>
                 {(type == "from") ? airports_from.map((data) => {
-                    return <p onClick={() => {setCity(data)}}>{data.iataCode}: {data.name}, {data.stateCode}</p>
+                    return  <div onClick={() => {setCity(data)}}>
+                                <p className={styles.airportName}>{data.airportName} - {data.iataCode}</p>
+                                <p className={styles.stateCode}>⮡ &nbsp;{data.name}, {data.stateCode}</p>
+                            </div>
                 }) : airports_to.map((data) => {
-                    return <p onClick={() => {setCity(data)}}>{data.iataCode}: {data.name}, {data.stateCode}</p>
+                    return  <div onClick={() => {setCity(data)}}>
+                                <p className={styles.airportName}>{data.airportName} - {data.iataCode}</p>
+                                <p className={styles.stateCode}>⮡ &nbsp;{data.name}, {data.stateCode}</p>
+                            </div>
                 })
             }
             </div>

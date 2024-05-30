@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { CityDrodown, Counter } from "./CityDropdown"
 import styles from "./styles.module.css"
 import { PassengerDropdown } from "./PassengerDropdown"
+import { FlightDatePicker } from "./DatePicker"
 
 let initialState = {adult: 0, youth: 0, child: 0, infant: 0}
 
@@ -23,6 +24,7 @@ export const Input = () => {
             <section className={styles.section}>
                 <CityDrodown type="from"/>
                 <CityDrodown type="to"/>
+                <FlightDatePicker/>
                 <PassengerDropdown/>
             </section>
         </div>

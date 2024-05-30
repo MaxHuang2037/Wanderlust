@@ -11,6 +11,7 @@ export const hotelListCity = async(req, res) => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, hotelID: hotel.hotelId})
         })
         console.log(hotels)
+        res.status(200).json({hotels: hotels});
     }).catch(function(responseError) {
         //do something
     })
@@ -24,7 +25,8 @@ export const hotelListGeo = async(req, res) => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, distance: hotel.distance.value, distanceUnit: hotel.distance.unit, hotelID: hotel.hotelId})
         })
         console.log(hotels)
-    }).catch(function(responseError) {
-        //do something
+        res.status(200).json({hotels: hotels});
+    }).catch(function(err) {
+        res.status(err.code).json({message: err.message});
     })
 }
