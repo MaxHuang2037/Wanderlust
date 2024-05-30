@@ -32,7 +32,7 @@ p{
 }
 
 .input{
-    width: 250px;
+    width: 12vw;
 }
 
 .dropdown{
@@ -40,7 +40,7 @@ p{
     border-radius: 1rem;
     position: absolute;
     overflow-y: scroll;
-    width: 275px;
+    width: 14vw;
     max-height: 200px;
     background-color: white;
     scrollbar-width: thin;
