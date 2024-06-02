@@ -27,7 +27,7 @@ export const flightSearch = async(req, res) => {
             console.log(flights)
         })
     }).catch(function(err){
-        res.status(err.code).json({message: err.message});
+        res.status(err.description[0].status).json({message: err.description[0].detail})
     });
 }
 

@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
-const getHotels = createAsyncThunk("/hotels", 
-    async (data) => {
+export const getHotelsCity = createAsyncThunk("/hotels", 
+    async (cityCode) => {
         try {
-            const res = await fetch(`/flights/airports?city=${data.cityName}&type=${data.type}`)
+            const res = await fetch(`/hotels/city?cityCode=${cityCode}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)
@@ -24,12 +24,12 @@ const hotelSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // builder.addCase(getHotels.fulfilled, (state, {payload}) => {
-        //     if(payload.message) {
-        //         return window.alert(payload.message)
-        //     }
-        //     state.hotels = payload.hotels;
-        // })
+        builder.addCase(getHotelsCity.fulfilled, (state, {payload}) => {
+            if(payload.message) {
+                return window.alert(payload.message)
+            }
+            state.hotels = payload.hotels;
+        })
     }
 })
 

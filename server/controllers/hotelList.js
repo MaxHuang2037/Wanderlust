@@ -4,16 +4,17 @@ let amenities = ["SWIMMING_POOL", "SPA", "FITNESS_CENTER", "AIR_CONDITIONING", "
 
 export const hotelListCity = async(req, res) => {
     let hotels = [];
-
+    const cityCode = req.query.cityCode
     //ratings: [1, 2, 3, 4, 5]
-    amadeus.client.get('/v1/reference-data/locations/hotels/by-city', {cityCode: 'JFK', radius: 5}).then(function(response) { //city code is the same as the airport, can change, can change amendities with "amenities: xxxx"
+    amadeus.client.get('/v1/reference-data/locations/hotels/by-city', {cityCode: cityCode, radius: 5}).then(function(response) { //city code is the same as the airport, can change, can change amendities with "amenities: xxxx"
         response.data.forEach(hotel => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, hotelID: hotel.hotelId})
         })
         console.log(hotels)
         res.status(200).json({hotels: hotels});
-    }).catch(function(responseError) {
-        //do something
+    }).catch(function(err) {
+        res.status(err.description[0].status).json({message: err.description[0].detail})
+
     })
 }
 
@@ -27,6 +28,6 @@ export const hotelListGeo = async(req, res) => {
         console.log(hotels)
         res.status(200).json({hotels: hotels});
     }).catch(function(err) {
-        res.status(err.code).json({message: err.message});
+        res.status(err.description[0].status).json({message: err.description[0].detail})
     })
 }

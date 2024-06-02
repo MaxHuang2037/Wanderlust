@@ -29,6 +29,7 @@ const flightSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getAirports.fulfilled, (state, {payload}) => {
+            console.log(payload)
             if(payload.message){
                 return window.alert(payload.message)
             }

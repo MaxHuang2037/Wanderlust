@@ -18,9 +18,8 @@ export const airportSearch = async(req, res) => {
             }
         }
         // console.log(airports)
-        res.status(200).json({airports: airports, type: req.query.type});
-
-        }).catch(function(err){
-            res.status(err.code).json({message: err.message});
+        res.status(200).json({airports: airports, type: req.query.type})
+    }).catch(function(err){
+        res.status(err.description[0].status).json({message: err.description[0].detail})
     })
 }

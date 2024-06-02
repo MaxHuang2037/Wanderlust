@@ -2,11 +2,10 @@ import express from "express"
 import dotenv from "dotenv"
 import Amadeus from "amadeus"
 import mongoose from "mongoose"
-import {airportSearch} from "./controllers/airportSearch.js"
-import { flightSearch } from "./controllers/flightSearch.js"
-import { hotelListCity, hotelListGeo } from "./controllers/hotelList.js"
+
 import userRoutes from "./routes/users.js"
 import flightRoutes from "./routes/flights.js"
+import hotelRoutes from "./routes/hotels.js"
 
 // OMGGGGGGG
 dotenv.config()
@@ -26,12 +25,9 @@ export const amadeus = new Amadeus({
     clientSecret: SECRET
 });
 
-// airportSearch()
-// flightSearch()
-// hotelListGeo()
-
 app.use("/users", userRoutes)
 app.use("/flights", flightRoutes)
+app.use("/hotels", hotelRoutes)
 
 const URI = process.env.MONGO_URI
 const PORT = 5000
