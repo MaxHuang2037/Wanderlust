@@ -67,3 +67,13 @@ p{
     /* display: flex;
     flex-direction: column; */
 }
+
+.increment{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+.dropdown#passenger{
+    scrollbar-width: none;
+}

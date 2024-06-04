@@ -1,7 +1,7 @@
-import styles from "./styles.module.css"
-import { useDispatch, useSelector } from "react-redux"
-import { getAirports, clearAirportsTo, clearAirportsFrom } from "../../features/flightSlice"
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { getAirports, clearAirportsTo, clearAirportsFrom } from "../../../features/flightSlice"
+import styles from "../styles.module.css"
 
 export const CityDrodown = ({type}) => {
     const dispatch = useDispatch()

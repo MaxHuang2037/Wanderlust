@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { CityDrodown, Counter } from "./CityDropdown"
-import styles from "./styles.module.css"
+import { useState } from "react"
+import { CityDrodown } from "./CityDropdown"
 import { PassengerDropdown } from "./PassengerDropdown"
 import { FlightDatePicker } from "./DatePicker"
+import styles from "../styles.module.css"
 
 let initialState = {adult: 0, youth: 0, child: 0, infant: 0}
 
