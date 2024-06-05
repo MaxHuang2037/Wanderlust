@@ -7,11 +7,12 @@ import VectorSource from 'ol/source/Vector.js';
 import VectorLayer from 'ol/layer/Vector.js';
 import Feature from 'ol/Feature.js';
 import { Icon, Style } from "ol/style";
+import { fromLonLat } from 'ol/proj';
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
 
-import important from "../../images/important.png"
+import pinpng from "../../images/pin.png"
 
 export const HotelMap = ({hotels}) => {
 
@@ -20,30 +21,22 @@ export const HotelMap = ({hotels}) => {
 
         var iconStyle = new Style({
             image: new Icon({
-                src: important,
-                scale: 0.2
+                src: pinpng,
+                scale: 0.05
             })
         })
 
         hotels.map((hotel) => {
             // console.log(hotel.long)
             const jeff = new Feature({
-                geometry: new Point([hotel.long, hotel.lat]),
+                geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
                 name: hotel.name,
                 key: hotel.id
             })
-            // jeff.setStyle(iconStyle)
+            jeff.setStyle(iconStyle)
             pins.push(jeff)
             console.log("worky")
         });
-        console.log(pins)
-
-        // const joe = new Feature({
-        //     geometry: new Point([0, 0]),
-        //     name: "for fucks sake"
-        // });
-
-        // joe.setStyle(iconStyle)
 
         const vectorSource = new VectorSource({
             features: pins
@@ -51,12 +44,6 @@ export const HotelMap = ({hotels}) => {
 
         const vectorLayer = new VectorLayer({
             source: vectorSource,
-            // style: {
-            //     "fill-color": "red",
-            //     "stroke-color": "black",
-            //     "stroke-width": 1.25,
-            //     "radius": 5
-            // }
         });
 
         const osmLayer = new TileLayer({
@@ -72,13 +59,29 @@ export const HotelMap = ({hotels}) => {
                 zoom: 0
             })
         });
+
+        /*
+        click handeler, will make it a overlay later
+            - Lune
+        */
+        
+        map.on("click", (evt) => {
+            const feature = map.forEachFeatureAtPixel(evt.pixel, 
+                (feature) => {
+                    return feature;
+                });
+            if (feature) {
+                alert(feature.get("name"));
+            }
+        })
+
         return () => map.setTarget(null);
     }, [hotels]);
 
+
     return (
         <>
-        <div className={styles.mapContainer} id="map"/>
-        <img src={important}/>
+            <div className={styles.mapContainer} id="map"/>
         </>
     );
 }

@@ -1,14 +1,26 @@
 import { useState } from "react"
 import { CityDrodown } from "./CityDropdown"
 import { PassengerDropdown } from "./PassengerDropdown"
-import { FlightDatePicker } from "./DatePicker"
+import { FlightDatePicker } from "./FlightDatePicker"
 import styles from "../styles.module.css"
+import { useDispatch } from "react-redux"
+import { getFlightOffers } from "../../../features/flightSlice"
 
-let initialState = {adult: 0, youth: 0, child: 0, infant: 0}
+const passengers = {adult: 0, youth: 0, child: 0, infant: 0}
+const codes = {origCode: "", destCode: ""}
 
 export const Input = () => {
-    const [quantity, setQuantity] = useState(initialState)
     const [flightType, setFlightType] = useState("oneway")
+    const [quantity, setQuantity] = useState(passengers)
+    const [iataCodes, setIataCodes] = useState(codes)
+    const [depDate, setDepDate] = useState("")
+    const dispatch = useDispatch()
+
+    const searchFlights = () => {
+        console.log(depDate)
+        dispatch(getFlightOffers({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: depDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
+    }
+
     return(
         <div>
             <section className={styles.section}>
@@ -22,11 +34,12 @@ export const Input = () => {
                 </div>
             </section>
             <section className={styles.section}>
-                <CityDrodown type="from"/>
-                <CityDrodown type="to"/>
-                <FlightDatePicker flightType={flightType}/>
+                <CityDrodown iataCodes={iataCodes} setIataCodes={setIataCodes} type="from"/>
+                <CityDrodown iataCodes={iataCodes} setIataCodes={setIataCodes} type="to"/>
+                <FlightDatePicker setDepDate={setDepDate} flightType={flightType}/>
                 <PassengerDropdown quantity={quantity} setQuantity={setQuantity}/>
             </section>
+            <button onClick={() => searchFlights()}>Search Flights</button>
         </div>
     )
 }

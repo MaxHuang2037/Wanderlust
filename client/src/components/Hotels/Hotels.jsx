@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { clearHotels, getHotelsCity } from '../../features/hotelSlice.js'
 
+import styles from "./styles.module.css"
 
 export const Hotels = () => {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ export const Hotels = () => {
 
     return (
         <div>
-            <input id="searchBar" onKeyUp={(e) => {
+            <input autoComplete='off' className={styles.searchBar} id="searchBar" onKeyUp={(e) => {
                 if(e.key === "Enter"){
                     dispatch(getHotelsCity(document.getElementById("searchBar").value))
                 }

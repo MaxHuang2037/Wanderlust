@@ -3,14 +3,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAirports, clearAirportsTo, clearAirportsFrom } from "../../../features/flightSlice"
 import styles from "../styles.module.css"
 
-export const CityDrodown = ({type}) => {
+export const CityDrodown = ({type, iataCodes, setIataCodes}) => {
     const dispatch = useDispatch()
     const {airports_to, airports_from} = useSelector((state) => state.flight)
     const ph = (type == "from") ? "From (city)" : "To (city)"
 
     const setCity = (data) => {
         document.getElementById(type).value = `${data.iataCode}: ${data.name}, ${data.stateCode}`;
-        (type == "from") ? dispatch(clearAirportsFrom()) : dispatch(clearAirportsTo())
+        if (type == "from"){
+            dispatch(clearAirportsFrom())
+            setIataCodes({...iataCodes, origCode: data.iataCode})
+        } else {
+            dispatch(clearAirportsTo())
+            setIataCodes({...iataCodes, destCode: data.iataCode})
+        }
     }
 
     useEffect(() => {

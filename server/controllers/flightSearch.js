@@ -1,13 +1,19 @@
 import { amadeus } from "../index.js";
 
-
 export const flightSearch = async(req, res) => {
     let flights = [];
+    const origCode = req.query.origCode
+    const destCode = req.query.destCode
+    const depDate = req.query.depDate //"2024-05-31"
+    const retDate = req.query.retDate // find a way to use this
+    const adults = parseInt(req.query.adults)
+    const children = parseInt(req.query.children)
+    const infants = parseInt(req.query.infants)
+    console.log(origCode, destCode, depDate, adults, children, infants)
 
-    amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: "YYZ", destinationLocationCode: "HND", departureDate: "2024-05-31", adults: 1}).then(function(response){
+    amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: origCode, destinationLocationCode: destCode, departureDate: depDate, adults: adults, children: children, infants: infants}).then(function(response){
         // console.log(response.data);
-        response.data.forEach( flight => {
-            let seg_length = flight.itineraries[0].segments.length - 1
+        response.data.forEach(flight => {
             let price = flight.price.total
             let segs = []
             flight.itineraries[0].segments.forEach( seg => {
@@ -18,15 +24,12 @@ export const flightSearch = async(req, res) => {
 
                 segs.push({departure: departure, from: from, arrival: arrival, to: to})
             })
-            // let departure = flight.itineraries[0].segments[0].departure.at
-            // let from = flight.itineraries[0].segments[0].departure.iataCode
-            // let arrival = flight.itineraries[0].segments[seg_length].arrival.at
-            // let to = flight.itineraries[0].segments[seg_length].arrival.iataCode
             
             flights.push({price: price, segments: segs})
-            console.log(flights)
         })
+        res.status(200).json(flights)
     }).catch(function(err){
+        console.log(err)
         res.status(err.description[0].status).json({message: err.description[0].detail})
     });
 }
