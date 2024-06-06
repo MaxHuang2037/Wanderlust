@@ -9,12 +9,11 @@ export const flightSearch = async(req, res) => {
     const adults = parseInt(req.query.adults)
     const children = parseInt(req.query.children)
     const infants = parseInt(req.query.infants)
-    console.log(origCode, destCode, depDate, adults, children, infants)
 
-    amadeus.client.get('/v2/shopping/flight-offers', {originLocationCode: origCode, destinationLocationCode: destCode, departureDate: depDate, adults: adults, children: children, infants: infants}).then(function(response){
-        // console.log(response.data);
+    amadeus.client.get('/v2/shopping/flight-offers', {currencyCode: "CAD", originLocationCode: origCode, destinationLocationCode: destCode, departureDate: depDate, adults: adults, children: children, infants: infants}).then(function(response){
         response.data.forEach(flight => {
             let price = flight.price.total
+            let cabin = flight.travelerPricings[0].fareDetailsBySegment[0].cabin
             let segs = []
             flight.itineraries[0].segments.forEach( seg => {
                 let departure = seg.departure.at
@@ -25,7 +24,7 @@ export const flightSearch = async(req, res) => {
                 segs.push({departure: departure, from: from, arrival: arrival, to: to})
             })
             
-            flights.push({price: price, segments: segs})
+            flights.push({price: price, segments: segs, cabin: cabin})
         })
         res.status(200).json(flights)
     }).catch(function(err){

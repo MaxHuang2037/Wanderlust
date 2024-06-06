@@ -1,9 +1,6 @@
 .section{
     margin: 0;
-    display: flex;
     flex-direction: row;
-    width: 70vw;
-    background-color: #CDE8E5;
 }
 
 .section:last-of-type{
@@ -11,12 +8,20 @@
 }
 
 .section:first-of-type{
-    width: 200px;
-    padding: 0 0 1rem 0;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
+    margin: 2rem 0 0 2rem;
     border-width: 1px;
+    padding: 0 0 1rem 0;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+}
+
+.input_container{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    background-color: #CDE8E5;
     border-radius: 2rem;
 }
 
@@ -58,16 +63,6 @@ p{
     scrollbar-width: thin;
 }
 
-.airportdropdown{
-    /* border-style: solid; */
-}
-
-.datePicker{
-    /* border-style: solid; */
-    /* display: flex;
-    flex-direction: column; */
-}
-
 .increment{
     display: flex;
     justify-content: space-between;
@@ -76,4 +71,27 @@ p{
 
 .dropdown#passenger{
     scrollbar-width: none;
+}
+
+.flight_offers{
+    overflow-y: scroll;
+    height: 800px;
+    margin-top: 6rem;
+}
+
+.search_button{
+    margin-bottom: 2rem;
+    border-style: solid;
+    border-radius: 1rem;
+    width: 175px;
+    margin-left: 2rem;
+    padding: 1rem 0 1rem 0;
+    font-size: 20px;
+}
+
+.flight{
+    border-style: solid;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+    padding: 1rem;
 }

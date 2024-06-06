@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
 
 export const HotelList = ({hotels}) => {
     return (

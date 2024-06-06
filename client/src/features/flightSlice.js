@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 export const getAirports = createAsyncThunk("/airports", 
     async (data) => {
         try {
+            console.log("Here")
             const res = await fetch(`/flights/airports?city=${data.cityName}&type=${data.type}`)
             return await res.json()
         } catch (err) {
@@ -26,7 +27,10 @@ export const getFlightOffers = createAsyncThunk("/flights",
 const initialState = {
     airports_to: [],
     airports_from: [],
-    flight_offers: []
+    flight_offers: [],
+    flight_offers_state: "",
+    airports_to_state: "", // unused
+    airports_from_state: "" // unused
 }
 
 const flightSlice = createSlice({
@@ -34,28 +38,43 @@ const flightSlice = createSlice({
     initialState,
     reducers: {
         clearAirportsTo: (state) => {
+            state.airports_to_state = ""
             state.airports_to = []
         },
         clearAirportsFrom: (state) => {
+            state.airports_from_state = ""
             state.airports_from = []
+        },
+        clearFlightOffers: (state) => {
+            state.flight_offers_state = ""
+            state.flight_offers = []
         }
     },
     extraReducers: (builder) => {
         builder.addCase(getAirports.fulfilled, (state, {payload}) => {
-            // console.log(payload)
+            console.log(payload)
+            payload.type === "from" ? state.airports_from_state = "" : state.airports_to_state = ""
             if(payload.message){
                 return window.alert(payload.message)
             }
-            payload.type === "from" ? state.airports_from = payload.airports : state.airports_to = payload.airports
+
+            if(payload.type === "from"){
+                state.airports_from = payload.airports
+            } else {
+                state.airports_to = payload.airports
+            }
         }).addCase(getFlightOffers.fulfilled, (state, {payload}) => {
-            console.log(payload)
+            // console.log(payload)
+            state.flight_offers_state = ""
             if(payload.message){
                 return window.alert(payload.message)
             }
             state.flight_offers = payload
+        }).addCase(getFlightOffers.pending, (state) => {
+            state.flight_offers_state = "p"
         })
     }
 })
 
-export const {clearAirportsTo, clearAirportsFrom} = flightSlice.actions
+export const {clearAirportsTo, clearAirportsFrom, clearFlightOffers} = flightSlice.actions
 export default flightSlice.reducer

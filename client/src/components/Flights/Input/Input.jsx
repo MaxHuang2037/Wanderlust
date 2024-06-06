@@ -17,12 +17,11 @@ export const Input = () => {
     const dispatch = useDispatch()
 
     const searchFlights = () => {
-        console.log(depDate)
         dispatch(getFlightOffers({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: depDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
     }
 
     return(
-        <div>
+        <div className={styles.input_container}>
             <section className={styles.section}>
                 <div>
                     <input type="radio" id="oneway" name="flight_type" defaultChecked="true" onClick={(() => setFlightType("oneway"))}/>
@@ -39,7 +38,7 @@ export const Input = () => {
                 <FlightDatePicker setDepDate={setDepDate} flightType={flightType}/>
                 <PassengerDropdown quantity={quantity} setQuantity={setQuantity}/>
             </section>
-            <button onClick={() => searchFlights()}>Search Flights</button>
+            <button className={styles.search_button} onClick={() => searchFlights()}>Search Flights</button>
         </div>
     )
 }

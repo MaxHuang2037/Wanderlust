@@ -8,6 +8,7 @@ import VectorLayer from 'ol/layer/Vector.js';
 import Feature from 'ol/Feature.js';
 import { Icon, Style } from "ol/style";
 import { fromLonLat } from 'ol/proj';
+import Overlay from 'ol/Overlay.js';
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
@@ -26,7 +27,7 @@ export const HotelMap = ({hotels}) => {
             })
         })
 
-        hotels.map((hotel) => {
+        hotels.forEach((hotel) => {
             // console.log(hotel.long)
             const jeff = new Feature({
                 geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
@@ -61,18 +62,42 @@ export const HotelMap = ({hotels}) => {
         });
 
         /*
+        some overlay shenanigans
+            - Lune
+        */
+
+        const container = document.getElementById("popup");
+        const content = document.getElementById("popup-content");
+        const closer = document.getElementById("popup-closer");
+        const popup = new Overlay({
+            element: container,
+            autoPan: {
+                animation: {
+                    duration: 250
+                }
+            }
+        });
+        map.addOverlay(popup);
+
+        /*
         click handeler, will make it a overlay later
             - Lune
         */
         
+        const element = popup.getElement();
         map.on("click", (evt) => {
             const feature = map.forEachFeatureAtPixel(evt.pixel, 
                 (feature) => {
                     return feature;
                 });
+
             if (feature) {
+                popup.setPosition(evt.coordinate);
+                containsExtent.innerHTML = feature.get("name");
+
                 alert(feature.get("name"));
             }
+            popover.show();
         })
 
         return () => map.setTarget(null);
@@ -82,6 +107,10 @@ export const HotelMap = ({hotels}) => {
     return (
         <>
             <div className={styles.mapContainer} id="map"/>
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"/>
+                <div id="popup-content"/>
+            </div>
         </>
     );
 }

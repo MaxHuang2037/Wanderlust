@@ -17,7 +17,7 @@ export const Navbar = ({user, setUser}) => {
 
             if (decodedToken.exp * 1000 < new Date().getTime()) logOut()
         }
-    }, [])
+    })
 
     return(
         <header className={styles.navbar}>

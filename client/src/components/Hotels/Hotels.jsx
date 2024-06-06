@@ -12,7 +12,7 @@ export const Hotels = () => {
 
     useEffect(() => {
         dispatch(clearHotels())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
