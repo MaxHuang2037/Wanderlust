@@ -16,6 +16,7 @@ export const FlightOffers = () => {
     return(
         <div className={styles.flight_offers}>
             {flight_offers_state == "p" && <img src={loading}/>}
+            {flight_offers_state == "e" && <h1>No flights exist</h1>}
             {flight_offers.map((offers) => {
                     return <div className={styles.flight}>
                             <h1>${offers.price} - {offers.cabin}</h1>
