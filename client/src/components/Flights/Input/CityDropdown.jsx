@@ -2,8 +2,8 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAirports, clearAirportsTo, clearAirportsFrom } from "../../../features/flightSlice"
 
-import loading from "../../../images/loading.gif"
 import styles from "../styles.module.css"
+import { Airport } from "./Airport"
 
 export const CityDrodown = ({type, iataCodes, setIataCodes}) => {
     const dispatch = useDispatch()
@@ -38,23 +38,16 @@ export const CityDrodown = ({type, iataCodes, setIataCodes}) => {
                 }}/>
             </section>
             <div className={styles.dropdown}>
-                {((type === "from") && airports_from_state == "e") && <h1>No airports found</h1>}
-                {((type === "to") && airports_to_state == "e") && <h1>No airports found</h1>}
+                {((type === "from") && airports_from_state === "e") && <h1>No airports found</h1>}
+                {((type === "to") && airports_to_state === "e") && <h1>No airports found</h1>}
                 {(type === "from") ? 
                     airports_from.map((data) => {
-                        return  <div key={`${data.airportName}-${data.iataCode}`} onClick={() => {setCity(data)}}>
-                                <p className={styles.airportName}>{data.airportName} - {data.iataCode}</p>
-                                <p className={styles.stateCode}>⮡ &nbsp;{data.name}, {data.stateCode}</p>
-                            </div>
-                    }
-                ) : 
+                        return <Airport data={data} setCity={setCity}/>
+                    }) : 
                     airports_to.map((data) => {
-                    return  <div key={`${data.airportName}-${data.iataCode}`} onClick={() => {setCity(data)}}>
-                                <p className={styles.airportName}>{data.airportName} - {data.iataCode}</p>
-                                <p className={styles.stateCode}>⮡ &nbsp;{data.name}, {data.stateCode}</p>
-                            </div>
-                })
-            }
+                        return <Airport data={data} setCity={setCity}/>
+                    })
+                }
             </div>
         </div>
     )

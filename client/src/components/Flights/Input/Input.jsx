@@ -20,6 +20,10 @@ export const Input = () => {
         dispatch(getFlightOffers({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: depDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
     }
 
+    const clearInput = () => {
+
+    }
+
     return(
         <div className={styles.input_container}>
             <section className={styles.section}>
@@ -38,7 +42,10 @@ export const Input = () => {
                 <FlightDatePicker setDepDate={setDepDate} flightType={flightType}/>
                 <PassengerDropdown quantity={quantity} setQuantity={setQuantity}/>
             </section>
-            <button className={styles.search_button} onClick={() => searchFlights()}>Search Flights</button>
+            <div className={styles.button_container}>
+                <button className={styles.buttons} onClick={() => searchFlights()}>Search</button>
+                <button className={styles.buttons} onClick={() => {}}>Clear</button>
+            </div>
         </div>
     )
 }

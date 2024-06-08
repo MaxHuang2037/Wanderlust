@@ -4,11 +4,14 @@
 }
 
 .section:last-of-type{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .section:first-of-type{
-    margin: 2rem 0 0 2rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
     border-width: 1px;
     padding: 0 0 1rem 0;
     width: 200px;
@@ -61,6 +64,7 @@ p{
     max-height: 200px;
     background-color: white;
     scrollbar-width: thin;
+    z-index: 1;
 }
 
 .increment{
@@ -79,19 +83,29 @@ p{
     margin-top: 6rem;
 }
 
-.search_button{
-    margin-bottom: 2rem;
+.buttons{
     border-style: solid;
     border-radius: 1rem;
-    width: 175px;
-    margin-left: 2rem;
+    width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
-}
-
+    }
+    
 .flight{
     border-style: solid;
     margin-bottom: 1rem;
     border-radius: 2rem;
     padding: 1rem;
+    }
+        
+.button_container{
+    /* border-style: solid; */
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    width: 325px;
+}
+
+.datePicker{
+    z-index: 0;
 }

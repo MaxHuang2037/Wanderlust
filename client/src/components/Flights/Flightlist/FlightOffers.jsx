@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { clearFlightOffers } from "../../../features/flightSlice"
 import loading from "../../../images/loading.gif"
 import styles from "../styles.module.css"
+import { Flight } from "./Flight"
 
 export const FlightOffers = () => {
     const dispatch = useDispatch()
@@ -15,17 +16,11 @@ export const FlightOffers = () => {
     // console.log(flight_offers)
     return(
         <div className={styles.flight_offers}>
-            {flight_offers_state == "p" && <img src={loading}/>}
-            {flight_offers_state == "e" && <h1>No flights exist</h1>}
+            {flight_offers_state === "p" && <img src={loading} alt="loading"/>}
+            {flight_offers_state === "e" && <h1>No flights exist</h1>}
             {flight_offers.map((offers) => {
-                    return <div className={styles.flight}>
-                            <h1>${offers.price} - {offers.cabin}</h1>
-                            {offers.segments.map((seg) => {
-                                return <p>{seg.departure} from {seg.from} - {seg.arrival} to {seg.to}</p>
-                            })}
-                        </div>
-                })
-            }
+                return <Flight offers={offers}/>
+            })}
         </div>
     )
 }
