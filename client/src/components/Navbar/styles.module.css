@@ -38,7 +38,16 @@
 }
 
 .home{
-    font-size: 40px;
+    font-size: 30px;
+}
+
+@media (max-width: 625px){
+    .home{
+        display: none;
+    }
+    .links{
+        margin-right: .25rem;
+    }
 }
 
 .loggedIn{
@@ -49,6 +58,7 @@
 .pfp{
     width: 35px;
     margin: 0 0.5rem 0 0.5rem;
+    border-radius: 2rem;
 }
 
 .username{

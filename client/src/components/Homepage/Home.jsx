@@ -6,9 +6,9 @@ import styles from './styles.module.css'
 
 export const Home = () => {
     return(
-        <body>
+        <body className={styles.home}>
             <div className={styles.container}>
-                <div>
+                <div className={styles.text}>
                     <h1>Explore the World with Wanderlust:</h1>
                     <h2>Your Passport to Adventure!</h2>
                     <h3>
@@ -24,13 +24,13 @@ export const Home = () => {
             </div>
             <div className={styles.container}>
                 <img className={styles.travel_img} src={plane} alt="homepageimg"/>
-                <div>
+                <div className={styles.text}>
                     <h1>Take Flight</h1>
                     <h2>Book Your Next Adventure with Ease!</h2>
                 </div>
             </div>
             <div className={styles.container}>
-                <div>
+                <div className={styles.text}>
                     <h1>Find Your Home Away from Home:</h1>
                     <h2> Explore and Book the Perfect Accommodation!</h2>
                 </div>
@@ -38,7 +38,7 @@ export const Home = () => {
             </div>
             <div className={styles.container}>
                 <img className={styles.travel_img} src={tour} alt="homepageimg"/>
-                <div>
+                <div className={styles.text}>
                     <h1>Discover Hidden Gems:</h1>
                     <h2>Uncover Must-See Tourist Spots Around the Globe!</h2>
                 </div>
