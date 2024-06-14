@@ -1,10 +1,10 @@
 import express from 'express'
-import { hotelListCity, hotelListGeo } from '../controllers/hotelList.js'
+import { getHotelListCity, getHotelListGeo } from '../controllers/hotelList.js'
 
 const Router = express.Router()
 
 Router
-.get("/city", hotelListCity)
-.get("/geo", hotelListGeo)
+.get("/city", getHotelListCity)
+.get("/geo", getHotelListGeo)
 
 export default Router

@@ -1,6 +1,6 @@
 import { amadeus } from "../index.js";
 
-export const hotelOffers = async(req, res) => {
+export const getHotelOffers = async(req, res) => {
     let offers = []
 
     amadeus.client.get('/v3/shopping/hotel-offers', {hotelIds: 'MCLONGHM', adults: 1, chechInDate: '2024-11-22', checkOutDate: "2024-12-05"}).then(function(response) {

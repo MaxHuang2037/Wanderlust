@@ -2,9 +2,11 @@ import { useState } from "react"
 import { CityDrodown } from "./CityDropdown"
 import { PassengerDropdown } from "./PassengerDropdown"
 import { FlightDatePicker } from "./FlightDatePicker"
-import styles from "../styles.module.css"
 import { useDispatch } from "react-redux"
 import { getFlightOffers } from "../../../features/flightSlice"
+import { clearAirportsFrom, clearAirportsTo } from "../../../features/flightSlice"
+
+import styles from "../styles.module.css"
 
 const passengers = {adult: 0, youth: 0, child: 0, infant: 0}
 const codes = {origCode: "", destCode: ""}
@@ -21,7 +23,12 @@ export const Input = () => {
     }
 
     const clearInput = () => {
-
+        setQuantity(passengers)
+        setIataCodes(codes)
+        dispatch(clearAirportsFrom())
+        dispatch(clearAirportsTo())
+        document.getElementById("to").value = ""
+        document.getElementById("from").value = ""
     }
 
     return(
@@ -44,7 +51,7 @@ export const Input = () => {
             </section>
             <div className={styles.button_container}>
                 <button className={styles.buttons} onClick={() => searchFlights()}>Search</button>
-                <button className={styles.buttons} onClick={() => {}}>Clear</button>
+                <button className={styles.buttons} onClick={() => clearInput()}>Clear</button>
             </div>
         </div>
     )

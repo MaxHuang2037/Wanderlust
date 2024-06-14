@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 import userRoutes from "./routes/users.js"
 import flightRoutes from "./routes/flights.js"
 import hotelRoutes from "./routes/hotels.js"
+import attractionRoutes from "./routes/attractions.js"
 
 // OMGGGGGGG
 dotenv.config()
@@ -28,6 +29,7 @@ export const amadeus = new Amadeus({
 app.use("/users", userRoutes)
 app.use("/flights", flightRoutes)
 app.use("/hotels", hotelRoutes)
+app.use("/attractions", attractionRoutes)
 
 const URI = process.env.MONGO_URI
 const PORT = 5000

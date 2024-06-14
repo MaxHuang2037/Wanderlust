@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import { clearFlightOffers } from "../../../features/flightSlice"
-import loading from "../../../images/loading.gif"
+import loading from "../../../images/klee.gif"
 import styles from "../styles.module.css"
 import { Flight } from "./Flight"
 

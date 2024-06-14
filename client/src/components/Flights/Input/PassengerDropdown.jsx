@@ -7,7 +7,7 @@ export const PassengerDropdown = ({quantity, setQuantity}) => {
     let total = quantity.adult + quantity.child + quantity.youth + quantity.infant
     return(
         <div>
-            <input onClick={() => setShowDropdown(!showDropdown)} className={styles.input} type="text" placeholder={`${total} Passenger(s)`} readOnly/>
+            <input onClick={() => setShowDropdown(!showDropdown)} id={styles.passengers} className={styles.input} type="text" placeholder={`${total} Passenger(s)`} readOnly/>
             {showDropdown &&
             <div className={styles.dropdown} id={styles.passenger}>
                 <PassengerIncrement total={total} setQuantity={setQuantity} quantity={quantity} text="Adult (16+)" type="adult"/>

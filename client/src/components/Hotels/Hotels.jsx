@@ -15,7 +15,7 @@ export const Hotels = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={styles.container}>
             <input autoComplete='off' className={styles.searchBar} id="searchBar" onKeyUp={(e) => {
                 if(e.key === "Enter"){
                     dispatch(getHotelsCity(document.getElementById("searchBar").value))

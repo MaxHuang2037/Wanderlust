@@ -4,6 +4,7 @@ main{
     align-items: center;
     color: #4D869C;
     background-color: #EEF7FF;
+    overflow-x: hidden;
 }
 
 button{

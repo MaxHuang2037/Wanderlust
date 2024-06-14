@@ -1,6 +1,6 @@
 import { amadeus } from "../index.js";
 
-export const airportSearch = async(req, res) => {
+export const getAirports = async(req, res) => {
     let airports = [];
     const city = req.query.city
     const type = req.query.type

@@ -1,6 +1,6 @@
 import { amadeus } from "../index.js";
 
-export const flightSearch = async(req, res) => {
+export const getFlights = async(req, res) => {
     let flights = [];
     const origCode = req.query.origCode
     const destCode = req.query.destCode

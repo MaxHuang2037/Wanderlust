@@ -2,7 +2,7 @@ import { amadeus } from "../index.js";
 
 let amenities = ["SWIMMING_POOL", "SPA", "FITNESS_CENTER", "AIR_CONDITIONING", "RESTAURANT", "PARKING", "PETS_ALLOWED", "AIRPORT_SHUTTLE", "BUSINESS_CENTER", "DISABLED_FACILITIES", "WIFI", "MEETING_ROOMS", "NO_KID_ALLOWED", "TENNIS", "GOLF", "KITCHEN", "ANIMAL_WATCHING", "BABY-SITTING", "BEACH", "CASINO", "JACUZZI", "SAUNA", 'SOLARIUM', 'MASSAGE', "VALET_PARKING", "BAR or LOUNGE", "KIDS_WELCOME", 'NO_PORN_FILMS', 'MINIBAR', 'TELEVISION', "WI-FI_IN_ROOM", "ROOM_SERVICE", "GUARDED_PARKG", "SERV_SPEC_MENU"]
 
-export const hotelListCity = async(req, res) => {
+export const getHotelListCity = async(req, res) => {
     let hotels = [];
     const cityCode = req.query.cityCode
     //ratings: [1, 2, 3, 4, 5]
@@ -18,7 +18,7 @@ export const hotelListCity = async(req, res) => {
     })
 }
 
-export const hotelListGeo = async(req, res) => {
+export const getHotelListGeo = async(req, res) => {
     let hotels = [];
 
     amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: 41.397158, longitude: 2.160873, radius: 5}).then(function(response) {

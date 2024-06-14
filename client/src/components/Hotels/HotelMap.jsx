@@ -17,6 +17,8 @@ import ReactDOM from 'react-dom';
 import pinpng from "../../images/pin.png"
 
 export const HotelMap = ({hotels}) => {
+    let centerLong = 0;
+    let centerLat = 0;
 
     let pins = []
 
@@ -28,6 +30,18 @@ export const HotelMap = ({hotels}) => {
     })
     hotels.forEach((hotel) => {
         // console.log(hotel.long)
+        if (centerLong == 0 && centerLat == 0) {
+            centerLong = hotel.long;
+            centerLat = hotel.lat;
+        }
+        else {
+            centerLong += hotel.long;
+            centerLat += hotel.lat;
+
+            centerLong = centerLong / 2;
+            centerLat = centerLat / 2;
+        }
+
         const jeff = new Feature({
             geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
             name: hotel.name,
@@ -35,8 +49,8 @@ export const HotelMap = ({hotels}) => {
         })
         jeff.setStyle(iconStyle)
         pins.push(jeff)
-        console.log("worky")
     });
+
     const vectorSource = new VectorSource({
         features: pins
     });
@@ -69,8 +83,8 @@ export const HotelMap = ({hotels}) => {
             target: "map",
             layers: [osmLayer, vectorLayer],
             view: new View({
-                center: [0, 0],
-                zoom: 0
+                center: fromLonLat([centerLong, centerLat]),
+                zoom: (centerLong == 0 && centerLat == 0) ? 0 : 15
             }),
             overlays: [popup]
         });
