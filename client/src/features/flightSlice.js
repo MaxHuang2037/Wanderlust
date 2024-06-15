@@ -70,10 +70,7 @@ const flightSlice = createSlice({
                 return window.alert(payload.message)
             }
             state.flight_offers = payload
-            if(state.flight_offers.length == 0){
-                console.log("JEEEE")
-                state.flight_offers_state = "e"
-            }
+            if(state.flight_offers.length == 0) state.flight_offers_state = "e"
         }).addCase(getFlightOffers.pending, (state) => {
             state.flight_offers_state = "p"
         })

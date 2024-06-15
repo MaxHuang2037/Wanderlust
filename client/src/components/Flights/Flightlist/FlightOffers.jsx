@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import { clearFlightOffers } from "../../../features/flightSlice"
+import { Flight } from "./Flight"
 import loading from "../../../images/klee.gif"
 import styles from "../styles.module.css"
-import { Flight } from "./Flight"
 
 export const FlightOffers = () => {
     const dispatch = useDispatch()
@@ -13,7 +13,6 @@ export const FlightOffers = () => {
     useEffect(() => {
         dispatch(clearFlightOffers())
     }, [dispatch])
-    // console.log(flight_offers)
     return(
         <div className={styles.flight_offers}>
             {flight_offers_state === "p" && <img src={loading} alt="loading"/>}

@@ -34,3 +34,9 @@
     list-style-type: none;
     
 }
+
+.popupContainer {
+    background-color: white;
+    border-style: solid;
+    
+}

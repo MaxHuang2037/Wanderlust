@@ -78,13 +78,27 @@ export const HotelMap = ({hotels}) => {
         }
     });
 
+    /*
+    search geo function
+    */
+
+    const geoSearch = () => {
+        return(
+            <button>
+                Search here
+            </button>
+        )        
+    }
+
+    const searchButton = document.createElement('button')
+
     useEffect(() => {
         const map = new Map({
             target: "map",
             layers: [osmLayer, vectorLayer],
             view: new View({
                 center: fromLonLat([centerLong, centerLat]),
-                zoom: (centerLong == 0 && centerLat == 0) ? 0 : 15
+                zoom: (centerLong == 0 && centerLat == 0) ? 0 : 13
             }),
             overlays: [popup]
         });
@@ -115,7 +129,7 @@ export const HotelMap = ({hotels}) => {
     return (
         <>
             <div className={styles.mapContainer} id="map"/>
-            <div id="popup" class="ol-popup">
+            <div id="popup" class="ol-popup" className={styles.popupContainer}>
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>

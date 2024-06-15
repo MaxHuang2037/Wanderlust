@@ -27,7 +27,7 @@ export const CityDrodown = ({type, iataCodes, setIataCodes}) => {
     }, [dispatch])
 
     return(
-        <div className={styles.airportdropdown}>
+        <div>
             <section className={styles.citiesInput}>
                 <input autoComplete="off" className={styles.input} id={type} type="text" placeholder={ph} onKeyUp={(e) => {
                     if(e.key === "Enter"){

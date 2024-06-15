@@ -21,7 +21,9 @@ export const getHotelListCity = async(req, res) => {
 export const getHotelListGeo = async(req, res) => {
     let hotels = [];
 
-    amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: 41.397158, longitude: 2.160873, radius: 5}).then(function(response) {
+    const long = req.query.long;
+    const lat = req.query.lat;
+    amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: lat, longitude: long, radius: 5}).then(function(response) {
         response.data.forEach(hotel => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, distance: hotel.distance.value, distanceUnit: hotel.distance.unit, hotelID: hotel.hotelId})
         })
