@@ -3,7 +3,7 @@ import { CityDrodown } from "./CityDropdown"
 import { PassengerDropdown } from "./PassengerDropdown"
 import { FlightDatePicker } from "./FlightDatePicker"
 import { useDispatch } from "react-redux"
-import { getFlightOffers } from "../../../features/flightSlice"
+import { clearFlightOffers, getFlightOffers } from "../../../features/flightSlice"
 import { clearAirportsFrom, clearAirportsTo } from "../../../features/flightSlice"
 
 import styles from "../styles.module.css"
@@ -19,6 +19,7 @@ export const Input = () => {
     const dispatch = useDispatch()
 
     const searchFlights = () => {
+        dispatch(clearFlightOffers())
         dispatch(getFlightOffers({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: depDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
     }
 

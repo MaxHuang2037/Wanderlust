@@ -58,10 +58,10 @@ const flightSlice = createSlice({
 
             if(payload.type === "from"){
                 state.airports_from = payload.airports
-                if(state.airports_from.length == 0) state.airports_from_state = "e"
+                if(state.airports_from.length === 0) state.airports_from_state = "e"
             } else {
                 state.airports_to = payload.airports
-                if(state.airports_to.length == 0) state.airports_to_state = "e"
+                if(state.airports_to.length === 0) state.airports_to_state = "e"
             }
         }).addCase(getFlightOffers.fulfilled, (state, {payload}) => {
             // console.log(payload)
@@ -70,7 +70,7 @@ const flightSlice = createSlice({
                 return window.alert(payload.message)
             }
             state.flight_offers = payload
-            if(state.flight_offers.length == 0) state.flight_offers_state = "e"
+            if(state.flight_offers.length === 0) state.flight_offers_state = "e"
         }).addCase(getFlightOffers.pending, (state) => {
             state.flight_offers_state = "p"
         })

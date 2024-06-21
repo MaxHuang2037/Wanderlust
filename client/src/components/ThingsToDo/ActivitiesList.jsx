@@ -13,7 +13,7 @@ export const ActivitiesList = () => {
         dispatch(clearThingsToDo())
     }, [dispatch])
     return(
-        <div>
+        <div className={styles.activity_container}>
             {things_to_do_state === "p" && <img src={loading} alt="loading"/>}
             {things_to_do_state === "e" && <h1>No activities exist</h1>}
             {things_to_do.map((offers) => {
