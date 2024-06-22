@@ -121,6 +121,10 @@ p{
     text-align: right;
 }
 
+.close_button_passenger:hover{
+    cursor: pointer;
+}
+
 .segments{
     display: flex;
     flex-direction: row;
