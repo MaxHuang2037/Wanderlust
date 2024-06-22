@@ -14,6 +14,7 @@ export const PassengerDropdown = ({quantity, setQuantity}) => {
                 <PassengerIncrement total={total} setQuantity={setQuantity} quantity={quantity} text="Youth (12-15)" type="youth"/>
                 <PassengerIncrement total={total} setQuantity={setQuantity} quantity={quantity} text="Child (2-11)" type="child"/>
                 <PassengerIncrement total={total} setQuantity={setQuantity} quantity={quantity} text="Infant (on lap)" type="infant"/>
+                <p className={styles.close_button_passenger} onClick={() => setShowDropdown(!showDropdown)}>Close</p>
             </div>
             }
         </div>

@@ -60,7 +60,7 @@ p{
     position: absolute;
     overflow-y: scroll;
     width: 235px;
-    max-height: 200px;
+    max-height: 210px;
     background-color: white;
     scrollbar-width: thin;
     z-index: 1;
@@ -74,10 +74,13 @@ p{
 
 .dropdown#passenger{
     scrollbar-width: none;
+    max-height: 255px;
 }
 
 .flight_offers{
+    width: 70vw;
     overflow-y: scroll;
+    min-width: 300px;
     height: 800px;
     margin-top: 6rem;
 }
@@ -113,13 +116,44 @@ p{
     cursor: pointer;
 }
 
+.close_button_passenger{
+    font-weight: bold;
+    text-align: right;
+}
+
 .segments{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.arrow_container:last-of-type{
+.arrow_container#right_arrow:nth-last-of-type(2){
     display: none;
+}
+
+.arrow_container#down_arrow{
+    display: none;
+}
+
+@media (max-width: 950px){
+    .arrow_container#down_arrow{
+        display: initial;
+    }
+    .arrow_container#right_arrow{
+        display: none;
+    }
+    .segments{
+        flex-direction: column;
+    }
+    .flight{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .arrow_container#down_arrow:last-of-type{
+        display: none;
+    }
 }
 
 .arrow{
@@ -128,4 +162,8 @@ p{
 
 .text{
     padding: 0 1rem 0 1rem;
+}
+
+.title{
+    word-wrap: break-word;
 }
