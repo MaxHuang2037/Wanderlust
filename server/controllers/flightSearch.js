@@ -17,10 +17,10 @@ export const getFlights = async(req, res) => {
             let cabin = flight.travelerPricings[0].fareDetailsBySegment[0].cabin
             let totalDuration = flight.itineraries[0].duration
             let segs = []
-            // console.log(flight)
-            console.log("------------------")
+            console.log(flight)
+            // console.log("------------------")
             flight.itineraries[0].segments.forEach(seg => {
-                console.log(seg)
+                // console.log(seg)
                 let departure = seg.departure
                 let arrival = seg.arrival
                 let duration = seg.duration
