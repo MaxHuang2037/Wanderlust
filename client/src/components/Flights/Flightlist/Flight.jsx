@@ -1,8 +1,8 @@
 import styles from "../styles.module.css"
 
-export const Flight = ({offers}) => {
+export const Flight = ({offers, setShowDetails}) => {
     return(
-        <div className={styles.flight}>
+        <div className={styles.flight} id={styles.full}>
             <h1 className={styles.title}>${offers.price} - {offers.cabin}</h1>
             <h2>Total duration: {offers.totalDuration.slice(2)}</h2>
             <div className={styles.segments}>
@@ -28,6 +28,7 @@ export const Flight = ({offers}) => {
                         </div>
                     </>
                 })}
+                <button onClick={() => setShowDetails(false)}>Close</button>
             </div>
         </div>
     )
