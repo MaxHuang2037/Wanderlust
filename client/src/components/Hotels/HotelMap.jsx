@@ -9,6 +9,7 @@ import Feature from 'ol/Feature.js';
 import { Icon, Style } from "ol/style";
 import { fromLonLat } from 'ol/proj';
 import Overlay from 'ol/Overlay.js';
+import {Control, defaults as defaultControls} from 'ol/control.js';
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
@@ -81,26 +82,23 @@ export const HotelMap = ({hotels}) => {
     /*
     search geo function
     */
+    const searchButton = document.getElementById('geoSearch');
 
-    const geoSearch = () => {
-        return(
-            <button>
-                Search here
-            </button>
-        )        
-    }
-
-    const searchButton = document.createElement('button')
+    const geoSearchControl = new Control( {
+        element: searchButton
+    })
 
     useEffect(() => {
         const map = new Map({
+            controls: defaultControls().extend([geoSearchControl]),
+
             target: "map",
             layers: [osmLayer, vectorLayer],
             view: new View({
                 center: fromLonLat([centerLong, centerLat]),
                 zoom: (centerLong == 0 && centerLat == 0) ? 0 : 13
             }),
-            overlays: [popup]
+            overlays: [popup],
         });
 
         /*
@@ -132,6 +130,9 @@ export const HotelMap = ({hotels}) => {
             <div id="popup" class="ol-popup" className={styles.popupContainer}>
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
+            </div>
+            <div id="geoSearch">
+                Search header
             </div>
         </>
     );

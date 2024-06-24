@@ -1,6 +1,11 @@
 import styles from "../styles.module.css"
 
 export const Flight = ({offers, setShowDetails}) => {
+    const close = () => {
+        setShowDetails(false)
+        document.getElementById("main_body").style.overflowY = "auto"
+    }
+
     return(
         <div className={styles.flight} id={styles.full}>
             <h1 className={styles.title}>${offers.price} - {offers.cabin}</h1>
@@ -28,8 +33,8 @@ export const Flight = ({offers, setShowDetails}) => {
                         </div>
                     </>
                 })}
-                <button onClick={() => setShowDetails(false)}>Close</button>
             </div>
+            <button className={styles.close_details_button} onClick={() => close()}>Close</button>
         </div>
     )
 }

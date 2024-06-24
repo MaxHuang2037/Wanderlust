@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 export const Home = () => {
     return(
-        <body className={styles.home}>
+        <div className={styles.home}>
             <div className={styles.container}>
                 <div className={styles.text}>
                     <h1>Explore the World with Wanderlust:</h1>
@@ -43,6 +43,6 @@ export const Home = () => {
                     <h2>Uncover Must-See Tourist Spots Around the Globe!</h2>
                 </div>
             </div>
-        </body>
+        </div>
     )
 }

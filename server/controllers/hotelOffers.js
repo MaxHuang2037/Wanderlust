@@ -13,3 +13,5 @@ export const getHotelOffers = async(req, res) => {
         res.status(err.description[0].status).json({message: err.description[0].detail})
     })
 }
+
+// IS THIS NOT USED???
