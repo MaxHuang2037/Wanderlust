@@ -4,8 +4,8 @@ import { createElement, useState } from "react"
 
 export const FlightsCompressed = ({offers}) => {
     const departureTime = offers.segments[0].departure.at.replace("T", " at ")
-    const numStops = offers.segments.length
-    const arrivalTime = offers.segments[numStops - 1].arrival.at.replace("T", " at ")
+    const numStops = offers.segments.length - 1
+    const arrivalTime = offers.segments[numStops].arrival.at.replace("T", " at ")
     const [showDetails, setShowDetails] = useState(false)
 
     return(
