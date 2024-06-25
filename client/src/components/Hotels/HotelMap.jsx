@@ -7,9 +7,12 @@ import VectorSource from 'ol/source/Vector.js';
 import VectorLayer from 'ol/layer/Vector.js';
 import Feature from 'ol/Feature.js';
 import { Icon, Style } from "ol/style";
-import { fromLonLat } from 'ol/proj';
+import { fromLonLat, toLonLat } from 'ol/proj';
 import Overlay from 'ol/Overlay.js';
 import {Control, defaults as defaultControls} from 'ol/control.js';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { clearHotels, getHotelListGeo } from '../../features/hotelSlice.js'
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
@@ -17,7 +20,20 @@ import ReactDOM from 'react-dom';
 
 import pinpng from "../../images/pin.png"
 
-export const HotelMap = ({hotels}) => {
+export const HotelMap = () => {
+    const dispatch = useDispatch()
+    const {hotels} = useSelector((state) => state.hotels)
+
+    useEffect(() => {
+        dispatch(clearHotels())
+    }, [dispatch])
+
+    /*
+    map stuff
+    */
+
+    let map;
+
     let centerLong = 0;
     let centerLat = 0;
 
@@ -82,15 +98,24 @@ export const HotelMap = ({hotels}) => {
     /*
     search geo function
     */
-    const searchButton = document.getElementById('geoSearch');
+    const geoSearch = () => {
+        dispatch(clearHotels);
+        const curCenter = toLonLat(map.getView().getCenter());
+        const zoom = map.getView().getZoom();
 
-    const geoSearchControl = new Control( {
-        element: searchButton
-    })
+        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1]}));
+        return (
+            console.log(curCenter)
+        );
+    }
+
+    /*
+    render map
+    */
 
     useEffect(() => {
-        const map = new Map({
-            controls: defaultControls().extend([geoSearchControl]),
+        map = new Map({
+            // controls: cont,
 
             target: "map",
             layers: [osmLayer, vectorLayer],
@@ -126,13 +151,14 @@ export const HotelMap = ({hotels}) => {
 
     return (
         <>
-            <div className={styles.mapContainer} id="map"/>
+            <div className={styles.mapContainer} id="map">
+                <div id="geoSearch" className={styles.geoSearch} onClick={geoSearch}>
+                    Search here (zoom in plz)
+                </div>
+            </div>
             <div id="popup" class="ol-popup" className={styles.popupContainer}>
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
-            </div>
-            <div id="geoSearch">
-                Search header
             </div>
         </>
     );

@@ -12,7 +12,7 @@ export const getHotelsCity = createAsyncThunk("/hotelsGeo",
 )
 
 export const getHotelListGeo = createAsyncThunk("/hotelsCity", 
-    async (long, lat) => {
+    async ({long, lat}) => {
         try {
             const res = await fetch(`/hotels/geo?long=${long}&lat=${lat}`)
             return await res.json()

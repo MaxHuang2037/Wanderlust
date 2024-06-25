@@ -1,7 +1,8 @@
 .mapContainer {
     display: flex;
-    justify-content: right;
-    border-style: solid;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* border-style: solid; */
 
     margin-bottom: 10px;
     margin-top: 15px;
@@ -11,6 +12,16 @@
     display: grid;
     grid-template-columns: 50vw 30vw;
     grid-template-rows: 5vh 85vh;
+}
+
+.geoSearch {
+    padding-left: 0.5rem;
+    border-radius: 1rem;
+    border-style: solid;
+    cursor: pointer;
+
+    font-weight: bold;
+
 }
 
 .searchBar {
@@ -38,5 +49,4 @@
 .popupContainer {
     background-color: white;
     border-style: solid;
-    
 }
