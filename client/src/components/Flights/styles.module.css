@@ -79,9 +79,9 @@ p{
 
 .flight_offers{
     width: 70vw;
+    height: 60vh;
     overflow-y: scroll;
     min-width: 300px;
-    height: 700px;
     margin-top: 2rem;
 }
 

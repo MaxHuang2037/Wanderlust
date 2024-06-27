@@ -4,6 +4,7 @@ import loading from "../../images/loading.gif"
 import { useEffect, useState } from "react"
 import { clearThingsToDo } from "../../features/thingsToDoSlice"
 import styles from "./styles.module.css"
+import { Activity } from "./Activity"
 
 export const ActivitiesList = ({pageNumber, pagination, things_to_do_state}) => {
     const dispatch = useDispatch()
@@ -17,9 +18,7 @@ export const ActivitiesList = ({pageNumber, pagination, things_to_do_state}) => 
             {things_to_do_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>}
             {things_to_do_state === "e" && <h1>No activities exist</h1>}
             {pagination.map((offers) => {
-                return <div>
-                    {offers.name}
-                </div>
+                return <Activity offers={offers}/>
             })}
         </div>
     )

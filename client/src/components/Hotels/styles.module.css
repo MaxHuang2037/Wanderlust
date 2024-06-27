@@ -46,6 +46,10 @@
     
 }
 
+.listElement:hover {
+    cursor: pointer;
+}
+
 .popupContainer {
     background-color: white;
     border-style: solid;
