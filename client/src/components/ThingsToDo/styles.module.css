@@ -74,15 +74,16 @@
 
 .activity{
     display: flex;
+    flex-direction: column;
     border-style: solid;
     border-radius: 2rem;
     margin: .01rem;
+    margin-bottom: 1rem;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
+    width: 350px;
     border-width: 3px;
     padding: 0;
-    margin-bottom: 1rem;
     min-width: 300px;
 }
 
@@ -98,15 +99,16 @@
     overflow-y: auto;
     word-wrap: break-word;
     scrollbar-width: thin;
-    padding-top: 0;
+    padding: 0;
+    margin: 1rem;
 }
 
 .activity_picture{
-    width: 250px;
+    width: 325px;
     height: 250px;
     object-fit: cover;
     border-radius: 2rem;
-    margin-right: .25rem;
+    margin: 1rem;
 }
 
 .amount{
@@ -115,28 +117,6 @@
 
 .title{
     width: fit-content;
-}
-
-@media (max-width: 1300px){
-    .activity_container{
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: center;
-    }
-    .activity_picture{
-        width: 175px;
-        height: 175px;
-    }
-    .activity{
-        max-width: 500px;
-        /* FIX FOR SMALL */
-        width: 80vw;
-        min-width: 300px;
-    }
-}
-
-@media (max-width: 700px){
-    .description{
-        width: 35vw;
-    }
+    padding: 0;
+    margin: 0 1rem 1rem 1rem;
 }
