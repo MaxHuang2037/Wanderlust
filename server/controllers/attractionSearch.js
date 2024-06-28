@@ -33,7 +33,7 @@ export const getThingsToDo = async(req, res) => {
     // console.log(lat, long)
     amadeus.client.get('/v1/shopping/activities', {latitude: lat, longitude: long, radius: 10}).then(function(response){
         const data = response.data
-        // console.log(data)
+        console.log(data)
         data.forEach(activity => {
             thingsToDo.push({name: activity.name, description: activity.description, price: activity.price, pictures: activity.pictures})
         })

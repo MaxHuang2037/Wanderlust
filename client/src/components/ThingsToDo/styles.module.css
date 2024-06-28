@@ -7,11 +7,10 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     width: 200px;
-    margin: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .dropdown{
-    margin-top: 5px;
     border-radius: 1rem;
     position: absolute;
     overflow-y: scroll;
@@ -49,22 +48,24 @@
 }
 
 .activity_container{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    overflow-x: hidden;
+    gap: 20px;
     overflow-y: scroll;
-    max-width: 85vw;
-    min-width: 50vw;
+    width: 85vw;
     height: 60vh;
     margin-top: 0;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .loading_img{
     padding-top: 5rem;
     margin: auto;
-    display: block;
     width: 200px;
     height: 200px;
+    position: absolute;
+    justify-self: center;
 }
 
 .pagination{
@@ -73,18 +74,13 @@
 }
 
 .activity{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border-style: solid;
     border-radius: 2rem;
-    margin: .01rem;
-    margin-bottom: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 350px;
-    border-width: 3px;
+    border-width: 1px;
     padding: 0;
-    min-width: 300px;
 }
 
 .main_container{
@@ -116,7 +112,7 @@
 }
 
 .title{
-    width: fit-content;
-    padding: 0;
+    padding: 1rem 0 0 0;
     margin: 0 1rem 1rem 1rem;
+    border-top: solid;
 }

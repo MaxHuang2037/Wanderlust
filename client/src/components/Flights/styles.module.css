@@ -189,9 +189,6 @@ p{
     .section:first-of-type{
         margin-left: 0;
     }
-    .input{
-        width: 50vw;
-    }
     .flight#full{
         top: 25px;
     }

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 
 import loading from "../../images/loading.gif"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { clearThingsToDo } from "../../features/thingsToDoSlice"
 import styles from "./styles.module.css"
 import { Activity } from "./Activity"
 
-export const ActivitiesList = ({pageNumber, pagination, things_to_do_state}) => {
+export const ActivitiesList = ({pagination, things_to_do_state}) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
