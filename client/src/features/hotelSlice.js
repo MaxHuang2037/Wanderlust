@@ -22,8 +22,20 @@ export const getHotelListGeo = createAsyncThunk("/hotelsCity",
     }
 )
 
+export const getHotelOffers = createAsyncThunk("/hotelsOffers", 
+    async (id) => {
+        try {
+            const res = await fetch(`/hotels/offers?id=${id}`)
+            return await res.json()
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+)
+
 const initialState = {
-    hotels: []
+    hotels: [],
+    offers: []
 }
 
 const hotelSlice = createSlice({
@@ -32,6 +44,9 @@ const hotelSlice = createSlice({
     reducers: {
         clearHotels: (state) => {
             state.hotels = []
+        },
+        clearOffers: (state) => {
+            state.offers = []
         }
     },
     extraReducers: (builder) => {
@@ -45,9 +60,13 @@ const hotelSlice = createSlice({
                 return window.alert(payload.message)
             }
             state.hotels = payload.hotels;
+        }).addCase(getHotelOffers.fulfilled, (state, {payload}) => {
+            if(payload.message) {
+                return window.alert(payload.message)
+            }
         })
     }
 })
 
-export const {clearHotels} = hotelSlice.actions
+export const {clearHotels, clearOffers} = hotelSlice.actions
 export default hotelSlice.reducer

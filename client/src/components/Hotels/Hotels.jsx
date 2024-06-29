@@ -22,7 +22,13 @@ export const Hotels = () => {
                 }
             }}/>
             <HotelMap hotels={hotels}/>
-            <HotelList hotels={hotels}/>
+            <div className={styles.hotelList}>
+                {
+                    hotels.map((hotel) => {
+                        return <HotelList hotel={hotel}/>
+                    })
+                }
+            </div>
         </div>
     );
 }

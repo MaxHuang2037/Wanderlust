@@ -54,9 +54,9 @@
     gap: 20px;
     overflow-y: scroll;
     width: 85vw;
-    height: 60vh;
-    margin-top: 0;
+    height: 70vh;
     justify-content: center;
+    margin-top: 0;
 }
 
 .loading_img{
@@ -80,6 +80,7 @@
     border-style: solid;
     border-radius: 2rem;
     border-width: 1px;
+    margin: 0;
     padding: 0;
 }
 
@@ -100,11 +101,17 @@
 }
 
 .activity_picture{
+    box-sizing: border-box;
     width: 325px;
     height: 250px;
     object-fit: cover;
     border-radius: 2rem;
     margin: 1rem;
+}
+
+.image_container{
+    display: flex;
+    justify-content: center;
 }
 
 .amount{
