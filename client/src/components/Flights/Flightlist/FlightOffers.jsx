@@ -1,23 +1,36 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
-import { clearFlightOffers } from "../../../features/flightSlice"
+import { clearFlightOffers, clearFlightOffersReturn } from "../../../features/flightSlice"
 import loading from "../../../images/loading.gif"
 import styles from "../styles.module.css"
 import { FlightsCompressed } from "./FlightsCompressed"
 
-export const FlightOffers = () => {
+export const FlightOffers = ({flightToggle}) => {
     const dispatch = useDispatch()
-    const {flight_offers, flight_offers_state} = useSelector((state) => state.flight)
+    const {flight_offers, flight_offers_state, flight_offers_return, flight_offers_return_state} = useSelector((state) => state.flight)
 
     useEffect(() => {
         dispatch(clearFlightOffers())
+        dispatch(clearFlightOffersReturn())
     }, [dispatch])
     return(
         <div className={styles.flight_offers}>
-            {flight_offers_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>}
-            {flight_offers_state === "e" && <h1>No flights exist</h1>}
-            {flight_offers.map((offers) => {
+            {flightToggle == "departure" ? 
+                (flight_offers_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>)
+                :
+                (flight_offers_return_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>)
+            }
+            {flightToggle == "departure" ?
+                (flight_offers_state === "e" && <h1>No flights exist</h1>)
+                :
+                (flight_offers_return_state === "e" && <h1>No flights exist</h1>)
+            }
+
+            {flightToggle == "departure" && flight_offers.map((offers) => {
+                return <FlightsCompressed offers={offers}/>
+            })}
+            {flightToggle == "return" && flight_offers_return.map((offers) => {
                 return <FlightsCompressed offers={offers}/>
             })}
         </div>

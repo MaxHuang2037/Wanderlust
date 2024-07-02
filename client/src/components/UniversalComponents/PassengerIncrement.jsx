@@ -1,4 +1,4 @@
-import styles from "../styles.module.css"
+import styles from "./styles.module.css"
 
 export const PassengerIncrement = ({total, setQuantity, quantity, text, type}) => {
     const increment = () => {

@@ -5,12 +5,12 @@ export const getFlights = async(req, res) => {
     const origCode = req.query.origCode
     const destCode = req.query.destCode
     const depDate = req.query.depDate //"2024-05-31"
-    const retDate = req.query.retDate // find a way to use this
     const adults = parseInt(req.query.adults)
     const children = parseInt(req.query.children)
     const infants = parseInt(req.query.infants)
+    const params = {currencyCode: "CAD", originLocationCode: origCode, destinationLocationCode: destCode, departureDate: depDate, adults: adults, children: children, infants: infants}
 
-    amadeus.client.get('/v2/shopping/flight-offers', {currencyCode: "CAD", originLocationCode: origCode, destinationLocationCode: destCode, departureDate: depDate, adults: adults, children: children, infants: infants}).then(function(response){
+    amadeus.client.get('/v2/shopping/flight-offers', params).then(function(response){
         // console.log(response.data)
         response.data.forEach(flight => {
             let price = flight.price.total

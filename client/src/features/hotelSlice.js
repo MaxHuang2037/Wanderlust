@@ -23,9 +23,9 @@ export const getHotelListGeo = createAsyncThunk("/hotelsCity",
 )
 
 export const getHotelOffers = createAsyncThunk("/hotelsOffers", 
-    async (id) => {
+    async ({ids, adults, checkIn, checkOut}) => {
         try {
-            const res = await fetch(`/hotels/offers?id=${id}`)
+            const res = await fetch(`/hotels/offers?ids=${ids}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)

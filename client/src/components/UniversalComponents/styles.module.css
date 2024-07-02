@@ -1,0 +1,45 @@
+.datePicker{
+    z-index: 0;
+}
+
+.input{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    width: 200px;
+}
+
+.dropdown{
+    margin-top: 5px;
+    border-radius: 1rem;
+    position: absolute;
+    overflow-y: scroll;
+    width: 235px;
+    max-height: 210px;
+    background-color: white;
+    scrollbar-width: thin;
+    z-index: 1;
+}
+
+.dropdown#passenger{
+    scrollbar-width: none;
+    max-height: 255px;
+}
+
+#passengers.input:hover{
+    cursor: pointer;
+}
+
+.close_button_passenger{
+    font-weight: bold;
+    text-align: right;
+}
+
+.close_button_passenger:hover{
+    cursor: pointer;
+}
+
+.increment{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+}
