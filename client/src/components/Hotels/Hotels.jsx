@@ -2,7 +2,7 @@ import { HotelList } from './HotelList.jsx'
 import { HotelMap } from './HotelMap.jsx'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { clearHotels, getHotelsCity, getHotelOffers } from '../../features/hotelSlice.js'
+import { clearHotels, clearOffers, getHotelsCity, getHotelOffers } from '../../features/hotelSlice.js'
 import { FlightDatePicker } from '../UniversalComponents/FlightDatePicker.jsx'
 import { PassengerDropdown } from '../UniversalComponents/PassengerDropdown.jsx'
 
@@ -20,6 +20,7 @@ export const Hotels = () => {
 
     useEffect(() => {
         dispatch(clearHotels())
+        dispatch(clearOffers())
     }, [dispatch])
 
     return (
@@ -27,15 +28,7 @@ export const Hotels = () => {
             <div className={styles.searchBar}>
                 <input className={styles.input} autoComplete='off' id="searchBar" onKeyUp={(e) => {
                     if(e.key === "Enter" && checkIn != "" && checkOut != "" && stay.adult > 0) {
-                        dispatch(getHotelsCity(document.getElementById("searchBar").value))
-
-                        let ids  = []
-                        hotels.map(hotel => {
-                            ids.push(hotel.hotelID)
-                        })
-                        console.log(ids)
-                        dispatch(getHotelOffers({ids: ids, checkIn: checkIn, checkOut: checkOut, adults: stay.adult}))
-                        console.log(offers)
+                        dispatch(getHotelsCity({city: document.getElementById("searchBar").value, checkIn: checkIn, checkOut: checkOut, adults: stay.adults}))
                     }
                     else if (e.key === "Enter"){
                         window.alert("Please enter a valid check in and check out date, as well as a valid number of guests")
@@ -45,11 +38,11 @@ export const Hotels = () => {
                 <PassengerDropdown className={styles.people} quantity={stay} setQuantity={setStay} placeholder="guest"/>
             </div>
 
-            <HotelMap hotels={hotels}/>
+            <HotelMap checkIn={checkIn} checkOut={checkOut} stay={stay}/>
             <div className={styles.hotelList}>
                 {
-                    hotels.map((hotel) => {
-                        return <HotelList hotel={hotel}/>
+                    offers.map((offer) => {
+                        return <HotelList offer={offer}/>
                     })
                 }
             </div>

@@ -8,6 +8,7 @@ import { Auth } from './components/Auth/Auth';
 import { Flights } from "./components/Flights/Flights";
 import { Hotels } from "./components/Hotels/Hotels";
 import { ThingsToDo } from "./components/ThingsToDo/ThingsToDo";
+import { TripPlanner } from "./components/TripPlanner/TripPlanner";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/flights" element={<Flights/>}/>
                 <Route path="/stays" element={<Hotels/>}/>
                 <Route path="/things-to-do" element={<ThingsToDo/>}/>
+                <Route path="/my-trips" element={<TripPlanner/>}/>
 			</Routes>
 			<Footer/>
         </main>

@@ -5,7 +5,7 @@ export const Flight = ({offers, setShowDetails}) => {
         setShowDetails(false)
         document.getElementById("main_body").style.overflowY = "auto"
     }
-
+    console.log(offers)
     return(
         <div className={styles.flight} id={styles.full}>
             <h1 className={styles.title}>${offers.price} - {offers.cabin}</h1>

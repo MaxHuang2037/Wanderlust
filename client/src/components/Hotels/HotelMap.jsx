@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom';
 
 import pinpng from "../../images/pin.png"
 
-export const HotelMap = () => {
+export const HotelMap = ({checkIn, checkOut, stay}) => {
     const dispatch = useDispatch()
     const {hotels} = useSelector((state) => state.hotels)
 
@@ -103,7 +103,7 @@ export const HotelMap = () => {
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
 
-        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1]}));
+        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1], checkIn: checkIn, checkOut: checkOut, adults: stay.adults}));
         return (
             console.log(curCenter)
         );

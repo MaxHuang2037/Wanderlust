@@ -16,14 +16,14 @@ export const ThingsToDo = () => {
     const [pageNumber, changePageNumber] = useState(0)
     const {things_to_do, things_to_do_state} = useSelector((state) => state.thingstodo)
 
-    let pagination = things_to_do.slice(pageNumber * 18, pageNumber * 18 + 18)
+    let pagination = things_to_do.slice(pageNumber * 24, pageNumber * 24 + 24)
 
     const searchThingsToDo = () => {
         dispatch(getThingsToDo(coords))
     }
 
     const increment = () => {
-        if(pageNumber < Math.floor((things_to_do.length - 1) / 18) && things_to_do.length != 0){
+        if(pageNumber < Math.floor((things_to_do.length - 1) / 24) && things_to_do.length != 0){
             changePageNumber(pageNumber + 1)
         }
     }
@@ -52,7 +52,7 @@ export const ThingsToDo = () => {
                 <button onClick={() => decrement()}>Previous</button>
                 <p className={styles.page_number}>{pageNumber + 1}</p>
                 <button onClick={() => increment()}>Next</button>
-                <button onClick={() => changePageNumber(Math.floor((things_to_do.length - 1) / 18))}>Last</button>
+                <button onClick={() => changePageNumber(Math.floor((things_to_do.length - 1) / 24))}>Last</button>
             </div>
         </div>
     )

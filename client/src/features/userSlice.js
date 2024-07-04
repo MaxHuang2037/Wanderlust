@@ -57,8 +57,27 @@ export const editProfile = createAsyncThunk("users/editProfile",
     }
 )
 
-const initialState = {
+export const updateTrips = createAsyncThunk("users/updateTrips",
+    async (trip) => {
+        try{
+            const res = await fetch("/users/updateTrips", {
+                method: "PATCH",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(trip)
+            })
+            return await res.json()
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+)
 
+const initialState = {
+    trips: []
 }
 
 const userSlice = createSlice({
@@ -84,6 +103,12 @@ const userSlice = createSlice({
                 return window.alert(payload.message)
             }
             localStorage.setItem("profile", JSON.stringify({token: token, result: payload}))
+        })
+        .addCase(updateTrips.fulfilled, (state, {payload}) => {
+            if(payload.message){
+                return window.alert(payload.message)
+            }
+            console.log(payload)
         })
     }
 })

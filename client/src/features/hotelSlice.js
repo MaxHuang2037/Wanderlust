@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
-export const getHotelsCity = createAsyncThunk("/hotelsGeo", 
-    async (cityCode) => {
+export const getHotelsCity = createAsyncThunk("/hotelscity", 
+    async ({cityCode, adults, checkIn, checkOut}) => {
         try {
-            const res = await fetch(`/hotels/city?cityCode=${cityCode}`)
+            const res = await fetch(`/hotels/city?cityCode=${cityCode}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)
@@ -11,21 +11,10 @@ export const getHotelsCity = createAsyncThunk("/hotelsGeo",
     }
 )
 
-export const getHotelListGeo = createAsyncThunk("/hotelsCity", 
-    async ({long, lat}) => {
+export const getHotelListGeo = createAsyncThunk("/hotelsGeo", 
+    async ({long, lat, adults, checkIn, checkOut}) => {
         try {
-            const res = await fetch(`/hotels/geo?long=${long}&lat=${lat}`)
-            return await res.json()
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
-)
-
-export const getHotelOffers = createAsyncThunk("/hotelsOffers", 
-    async ({ids, adults, checkIn, checkOut}) => {
-        try {
-            const res = await fetch(`/hotels/offers?ids=${ids}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
+            const res = await fetch(`/hotels/geo?long=${long}&lat=${lat}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)
@@ -34,7 +23,7 @@ export const getHotelOffers = createAsyncThunk("/hotelsOffers",
 )
 
 const initialState = {
-    hotels: [],
+    hotelList: [],
     offers: []
 }
 
@@ -60,10 +49,6 @@ const hotelSlice = createSlice({
                 return window.alert(payload.message)
             }
             state.hotels = payload.hotels;
-        }).addCase(getHotelOffers.fulfilled, (state, {payload}) => {
-            if(payload.message) {
-                return window.alert(payload.message)
-            }
         })
     }
 })

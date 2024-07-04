@@ -166,6 +166,12 @@ p{
     }
 }
 
+@media (max-width: 1641px){
+    .flight#full{
+        top: 50px;
+    }
+}
+
 .arrow{
     padding: 0 2rem 0 2rem;
 }

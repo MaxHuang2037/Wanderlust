@@ -59,3 +59,16 @@ export const editProfile = async (req, res) => {
         res.status(404).json({message: err.message})
     }
 }
+
+export const updateTrips = async (req, res) => {
+    const trips = req.body
+    const UID = req.userId
+    console.log(trips)
+    try{
+        const user = await User.findOneAndUpdate({_id: UID}, {trips: trips}, {new: true})
+        res.status(200).json(user)
+    } catch (err){
+        console.log(err.message)
+        res.status(404).json({message: err.message})
+    }
+}
