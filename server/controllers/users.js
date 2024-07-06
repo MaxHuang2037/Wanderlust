@@ -61,14 +61,24 @@ export const editProfile = async (req, res) => {
 }
 
 export const updateTrips = async (req, res) => {
-    const trips = req.body
+    const new_trips = req.body
     const UID = req.userId
-    console.log(trips)
     try{
-        const user = await User.findOneAndUpdate({_id: UID}, {trips: trips}, {new: true})
-        res.status(200).json(user)
+        const {trips} = await User.findOneAndUpdate({_id: UID}, {trips: new_trips}, {new: true})
+        res.status(200).json(trips)
     } catch (err){
         console.log(err.message)
+        res.status(404).json({message: err.message})
+    }
+}
+
+export const getTrips = async (req, res) => {
+    const UID = req.userId
+    try{
+        const {trips} = await User.findOne({_id: UID})
+        console.log(trips)
+        res.status(200).json(trips)
+    } catch(err) {
         res.status(404).json({message: err.message})
     }
 }

@@ -16,15 +16,14 @@ export const HotelList = ({offer}) => {
                         return (
                             <div>
                                 <h2> Check in: {room.date.checkIn} </h2>
-                                <h2> Check out: {room.date.checOut} </h2>
+                                <h2> Check out: {room.date.checkOut} </h2>
                                 <h2> Price: {room.price} {room.currency} </h2>
 
                                 <h3> Policy: {room.policy} </h3>
-                                <h3> {room.room.beds} {room.room.bedType} </h3>
+                                <h3> Beds: {room.room.beds} {room.room.bedType} </h3>
                                 <h3> {room.room.description} </h3>
 
                                 <h4> Adults: {room.guests.adults}</h4>
-                                <h4> Children: {room.guests.children}</h4>
                             </div>
                         )
                     })

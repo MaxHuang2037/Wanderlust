@@ -45,7 +45,7 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
             scale: 0.05
         })
     })
-    hotels.forEach((hotel) => {
+    hotels.map((hotel) => {
         // console.log(hotel.long)
         if (centerLong == 0 && centerLat == 0) {
             centerLong = hotel.long;

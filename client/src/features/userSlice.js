@@ -76,6 +76,24 @@ export const updateTrips = createAsyncThunk("users/updateTrips",
     }
 )
 
+export const getTrips = createAsyncThunk("users/getTrips", 
+    async () => {
+        try{
+            const res = await fetch(`/users/getTrips`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "authorization": `Bearer ${token}`
+                }
+            })
+            return await res.json()
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+)
+
 const initialState = {
     trips: []
 }
@@ -108,7 +126,13 @@ const userSlice = createSlice({
             if(payload.message){
                 return window.alert(payload.message)
             }
-            console.log(payload)
+            state.trips = payload
+        })
+        .addCase(getTrips.fulfilled, (state, {payload}) => {
+            if(payload.message){
+                return window.alert(payload.message)
+            }
+            state.trips = payload
         })
     }
 })

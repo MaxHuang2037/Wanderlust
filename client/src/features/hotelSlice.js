@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
-export const getHotelsCity = createAsyncThunk("/hotelscity", 
+export const getHotelsCity = createAsyncThunk("/hotelsCity", 
     async ({cityCode, adults, checkIn, checkOut}) => {
         try {
-            const res = await fetch(`/hotels/city?cityCode=${cityCode}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
+            const res = await fetch(`/hotels/hotelsCity?cityCode=${cityCode}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)
@@ -14,7 +14,7 @@ export const getHotelsCity = createAsyncThunk("/hotelscity",
 export const getHotelListGeo = createAsyncThunk("/hotelsGeo", 
     async ({long, lat, adults, checkIn, checkOut}) => {
         try {
-            const res = await fetch(`/hotels/geo?long=${long}&lat=${lat}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
+            const res = await fetch(`/hotels/hotelsGeo?long=${long}&lat=${lat}&adults=${adults}&checkIn=${checkIn}&checkOut=${checkOut}`)
             return await res.json()
         } catch (err) {
             console.log(err.message)
@@ -23,7 +23,7 @@ export const getHotelListGeo = createAsyncThunk("/hotelsGeo",
 )
 
 const initialState = {
-    hotelList: [],
+    hotels: [],
     offers: []
 }
 
@@ -43,7 +43,8 @@ const hotelSlice = createSlice({
             if(payload.message) {
                 return window.alert(payload.message)
             }
-            state.hotels = payload.hotels;
+            state.hotels = payload.hotelList
+            state.offers = payload.offers
         }).addCase(getHotelListGeo.fulfilled, (state, {payload}) => {
             if (payload.message) {
                 return window.alert(payload.message)

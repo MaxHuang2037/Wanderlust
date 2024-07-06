@@ -28,7 +28,8 @@ export const Hotels = () => {
             <div className={styles.searchBar}>
                 <input className={styles.input} autoComplete='off' id="searchBar" onKeyUp={(e) => {
                     if(e.key === "Enter" && checkIn != "" && checkOut != "" && stay.adult > 0) {
-                        dispatch(getHotelsCity({city: document.getElementById("searchBar").value, checkIn: checkIn, checkOut: checkOut, adults: stay.adults}))
+                        console.log(stay.adult)
+                        dispatch(getHotelsCity({cityCode: document.getElementById("searchBar").value, checkIn: checkIn, checkOut: checkOut, adults: stay.adult}))
                     }
                     else if (e.key === "Enter"){
                         window.alert("Please enter a valid check in and check out date, as well as a valid number of guests")

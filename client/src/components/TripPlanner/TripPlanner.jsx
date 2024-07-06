@@ -1,11 +1,16 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { updateTrips } from "../../features/userSlice"
+import { MyTrips } from "./MyTrips"
+import { useEffect } from "react"
+import { getTrips } from "../../features/userSlice"
 
 export const TripPlanner = () => {
     const dispatch = useDispatch()
 
+    const {trips} = useSelector((state) => state.auth)
+
     const addTrip = () => {
-        const test = [{
+        const test = {
             depFlight: {price: "999",
                         segments: [{departure: {iataCode: "YYZ",
                                                 at: "String",
@@ -32,12 +37,19 @@ export const TripPlanner = () => {
                             description: "String",
                             price: "String",
                             pictures: ["String"]}]
-        }]
-        dispatch(updateTrips(test))
+        }
+
+        dispatch(updateTrips([...trips, test]))
     }
+
+    useEffect(() => {
+        dispatch(getTrips())
+    }, [dispatch])
+
     return(
         <div onClick={() => addTrip()}>
             THIS IS THE BODY
+            <MyTrips trips={trips}/>
         </div>
     )
 }
