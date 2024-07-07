@@ -34,7 +34,7 @@ export const hotelCity = async(req, res) => {
                 try{
                     offers.push({date: {checkIn: offer.checkInDate, checkOut: offer.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
                 } catch (err){
-                    console.log("GAY HOTEL")
+
                 }
             })
             ret.push({hotel: hotel.hotel.name, rooms: offers})
@@ -52,7 +52,7 @@ export const hotelGeo = async(req, res) => {
     const lat = req.query.lat;
     const long = req.query.long;
     
-    amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: lat, longitude: long}).then(function(response) {
+    await amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: lat, longitude: long}).then(function(response) {
         response.data.forEach(hotel => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, distance: hotel.distance.value, distanceUnit: hotel.distance.unit, hotelID: hotel.hotelId})
         })
@@ -68,6 +68,8 @@ export const hotelGeo = async(req, res) => {
     hotels.forEach(hotel => {
         ids.push(hotel.hotelID)
     })
+
+    console.log(ids)
 
     let ret = [];
 

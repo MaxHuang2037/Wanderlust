@@ -67,8 +67,8 @@ export const updateTrips = async (req, res) => {
         const {trips} = await User.findOneAndUpdate({_id: UID}, {trips: new_trips}, {new: true})
         res.status(200).json(trips)
     } catch (err){
+        res.status(401).json({message: err.message})
         console.log(err.message)
-        res.status(404).json({message: err.message})
     }
 }
 
@@ -80,5 +80,6 @@ export const getTrips = async (req, res) => {
         res.status(200).json(trips)
     } catch(err) {
         res.status(404).json({message: err.message})
+        console.log(err.message)
     }
 }

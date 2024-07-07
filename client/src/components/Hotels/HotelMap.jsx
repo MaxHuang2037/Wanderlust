@@ -12,7 +12,7 @@ import Overlay from 'ol/Overlay.js';
 import {Control, defaults as defaultControls} from 'ol/control.js';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { clearHotels, getHotelListGeo } from '../../features/hotelSlice.js'
+import { clearHotels, clearOffers, getHotelListGeo } from '../../features/hotelSlice.js'
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
@@ -26,6 +26,8 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
 
     useEffect(() => {
         dispatch(clearHotels())
+        dispatch(clearOffers())
+        
     }, [dispatch])
 
     /*
@@ -100,10 +102,11 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     */
     const geoSearch = () => {
         dispatch(clearHotels);
+        dispatch(clearOffers);
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
 
-        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1], checkIn: checkIn, checkOut: checkOut, adults: stay.adults}));
+        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1], checkIn: checkIn, checkOut: checkOut, adults: stay.adult}));
         return (
             console.log(curCenter)
         );
@@ -114,6 +117,7 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     */
 
     useEffect(() => {
+        console.log("rendered map")
         map = new Map({
             // controls: cont,
 

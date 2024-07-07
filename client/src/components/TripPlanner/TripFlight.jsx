@@ -1,13 +1,8 @@
-import styles from "../styles.module.css"
+import styles from "./styles.module.css"
 
-export const Flight = ({offers, setShowDetails}) => {
-    const close = () => {
-        setShowDetails(false)
-        document.getElementById("main_body").style.overflowY = "auto"
-    }
-    console.log(offers)
+export const TripFlight = ({offers}) => {
     return(
-        <div className={styles.flight} id={styles.full}>
+        <div>
             <h1 className={styles.title}>${offers.price} - {offers.cabin}</h1>
             <h2>Total duration: {offers.totalDuration.slice(2)}</h2>
             <div className={styles.segments}>
@@ -34,7 +29,6 @@ export const Flight = ({offers, setShowDetails}) => {
                     </>
                 })}
             </div>
-            <button className={styles.close_details_button} onClick={() => close()}>Close</button>
         </div>
     )
 }

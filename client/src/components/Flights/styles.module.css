@@ -136,6 +136,9 @@ p{
     .arrow_container#right_arrow{
         display: none;
     }
+    .arrow_container#down_arrow:last-of-type{
+        display: none;
+    }
     .segments{
         flex-direction: column;
     }
@@ -143,9 +146,6 @@ p{
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    .arrow_container#down_arrow:last-of-type{
-        display: none;
     }
     .input_container{
         flex-direction: column;

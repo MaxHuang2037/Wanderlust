@@ -6,6 +6,7 @@ export const Activity = ({offers}) => {
         <div className={styles.activity}>
             <div className={styles.image_container}>
                 <img className={styles.activity_picture} src={offers.pictures[0]} alt={offers.name}/>
+                {console.log(offers.pictures[0])}
             </div>
             <div>
                 <h2 className={styles.title}>{offers.name}</h2>

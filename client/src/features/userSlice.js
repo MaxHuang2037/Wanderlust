@@ -123,12 +123,11 @@ const userSlice = createSlice({
             localStorage.setItem("profile", JSON.stringify({token: token, result: payload}))
         })
         .addCase(updateTrips.fulfilled, (state, {payload}) => {
-            if(payload.message){
-                return window.alert(payload.message)
-            }
+            console.log("HERE")
             state.trips = payload
         })
         .addCase(getTrips.fulfilled, (state, {payload}) => {
+            console.log(payload)
             if(payload.message){
                 return window.alert(payload.message)
             }
