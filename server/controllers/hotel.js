@@ -52,12 +52,12 @@ export const hotelGeo = async(req, res) => {
     const lat = req.query.lat;
     const long = req.query.long;
     
-    await amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: lat, longitude: long}).then(function(response) {
+    await amadeus.client.get('/v1/reference-data/locations/hotels/by-geocode', {latitude: lat, longitude: long, radius: 5}).then(function(response) {
         response.data.forEach(hotel => {
             hotels.push({name: hotel.name, long: hotel.geoCode.longitude, lat: hotel.geoCode.latitude, distance: hotel.distance.value, distanceUnit: hotel.distance.unit, hotelID: hotel.hotelId})
         })
     }).catch(function(err) {
-        res.status(err.description[0].status).json({message: err.description[0].detail})
+        res.status(err.description[0].status).json({message: "SMTG WENT WRONG"})
     })
 
     let ids = []
@@ -85,6 +85,9 @@ export const hotelGeo = async(req, res) => {
             })
             ret.push({hotel: hotel.hotel.name, rooms: offers})
         })
+        console.log(hotels)
+        console.log("-----------------")
+        console.log(ret)
         res.status(200).json({hotelList: hotels, offers: ret})
     }).catch(function(err) {
         console.log(err)

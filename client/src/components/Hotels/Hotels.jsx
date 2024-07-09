@@ -14,8 +14,8 @@ export const Hotels = () => {
     const dispatch = useDispatch()
     const {hotels, offers} = useSelector((state) => state.hotels)
 
-    let [checkIn, setCheckIn] = useState("");
-    let [checkOut, setCheckOut] = useState("");
+    let [checkIn, setCheckIn] = useState("")
+    let [checkOut, setCheckOut] = useState("")
     let [stay, setStay] = useState(guests)
 
     useEffect(() => {

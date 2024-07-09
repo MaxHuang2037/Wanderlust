@@ -34,7 +34,7 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     map stuff
     */
 
-    let map;
+    let map = new Map();
 
     let centerLong = 0;
     let centerLat = 0;
@@ -47,39 +47,8 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
             scale: 0.05
         })
     })
-    hotels.map((hotel) => {
-        // console.log(hotel.long)
-        if (centerLong == 0 && centerLat == 0) {
-            centerLong = hotel.long;
-            centerLat = hotel.lat;
-        }
-        else {
-            centerLong += hotel.long;
-            centerLat += hotel.lat;
-
-            centerLong = centerLong / 2;
-            centerLat = centerLat / 2;
-        }
-
-        const jeff = new Feature({
-            geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
-            name: hotel.name,
-            key: hotel.id
-        })
-        jeff.setStyle(iconStyle)
-        pins.push(jeff)
-    });
-
-    const vectorSource = new VectorSource({
-        features: pins
-    });
-    const vectorLayer = new VectorLayer({
-        source: vectorSource,
-    });
-    const osmLayer = new TileLayer({
-        preload: Infinity,
-        source: new OSM()
-    });
+    console.log(hotels)
+    
 
     /*
     overlay
@@ -103,12 +72,13 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     const geoSearch = () => {
         dispatch(clearHotels);
         dispatch(clearOffers);
+        console.log(map)
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
 
         dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1], checkIn: checkIn, checkOut: checkOut, adults: stay.adult}));
         return (
-            console.log(curCenter)
+            console.log(hotels)
         );
     }
 
@@ -117,7 +87,42 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     */
 
     useEffect(() => {
-        console.log("rendered map")
+        hotels.map((hotel) => {
+            // console.log(hotel.long)
+            if (centerLong == 0 && centerLat == 0) {
+                centerLong = hotel.long;
+                centerLat = hotel.lat;
+            }
+            else {
+                centerLong += hotel.long;
+                centerLat += hotel.lat;
+    
+                centerLong = centerLong / 2;
+                centerLat = centerLat / 2;
+            }
+    
+            const jeff = new Feature({
+                geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
+                name: hotel.name,
+                key: hotel.id
+            })
+            jeff.setStyle(iconStyle)
+            pins.push(jeff)
+        });
+    
+        const vectorSource = new VectorSource({
+            features: pins
+        });
+        const vectorLayer = new VectorLayer({
+            source: vectorSource,
+        });
+        const osmLayer = new TileLayer({
+            preload: Infinity,
+            source: new OSM()
+        });
+
+
+        
         map = new Map({
             // controls: cont,
 
@@ -148,7 +153,7 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
                 content.innerHTML = feature.get("name");
             }
         })
-
+        console.log("rendered map")
         return () => map.setTarget(null);
     }, [hotels, container]);
 

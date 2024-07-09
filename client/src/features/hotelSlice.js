@@ -49,7 +49,8 @@ const hotelSlice = createSlice({
             if (payload.message) {
                 return window.alert(payload.message)
             }
-            state.hotels = payload.hotels;
+            state.hotels = payload.hotelList;
+            state.offers = payload.offers;
         })
     }
 })
