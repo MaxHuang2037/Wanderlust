@@ -27,13 +27,14 @@ export const Hotels = () => {
         <div className={styles.container}>
             <div className={styles.searchBar}>
                 <input className={styles.input} autoComplete='off' id="searchBar" onKeyUp={(e) => {
-                    if(e.key === "Enter" && checkIn != "" && checkOut != "" && stay.adult > 0) {
+                    if(e.key === "Enter") {
+                        // && checkIn != "" && checkOut != "" && stay.adult > 0
                         console.log(stay.adult)
-                        dispatch(getHotelsCity({cityCode: document.getElementById("searchBar").value, checkIn: checkIn, checkOut: checkOut, adults: stay.adult}))
+                        dispatch(getHotelsCity(document.getElementById("searchBar").value))
                     }
-                    else if (e.key === "Enter"){
-                        window.alert("Please enter a valid check in and check out date, as well as a valid number of guests")
-                    }
+                    // else if (e.key === "Enter"){
+                    //     window.alert("Please enter a valid check in and check out date, as well as a valid number of guests")
+                    // }
                 }}/>
                 <FlightDatePicker className={styles.datePicker} flightType="roundtrip" setDepDate={setCheckIn} setRetDate={setCheckOut} label1="Check in" label2="Check out"/>
                 <PassengerDropdown className={styles.people} quantity={stay} setQuantity={setStay} placeholder="guest"/>
@@ -42,8 +43,8 @@ export const Hotels = () => {
             <HotelMap checkIn={checkIn} checkOut={checkOut} stay={stay}/>
             <div className={styles.hotelList}>
                 {
-                    offers.map((offer) => {
-                        return <HotelList offer={offer}/>
+                    hotels.map((hotel) => {
+                        return <HotelList hotel={hotel}/>
                     })
                 }
             </div>

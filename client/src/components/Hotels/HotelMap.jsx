@@ -12,7 +12,7 @@ import Overlay from 'ol/Overlay.js';
 import {Control, defaults as defaultControls} from 'ol/control.js';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { clearHotels, clearOffers, getHotelListGeo } from '../../features/hotelSlice.js'
+import { clearHotels, getHotelListGeo } from '../../features/hotelSlice.js'
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
@@ -20,21 +20,19 @@ import ReactDOM from 'react-dom';
 
 import pinpng from "../../images/pin.png"
 
-export const HotelMap = ({checkIn, checkOut, stay}) => {
+export const HotelMap = () => {
     const dispatch = useDispatch()
     const {hotels} = useSelector((state) => state.hotels)
 
     useEffect(() => {
         dispatch(clearHotels())
-        dispatch(clearOffers())
-        
     }, [dispatch])
 
     /*
     map stuff
     */
 
-    let map = new Map();
+    let map;
 
     let centerLong = 0;
     let centerLat = 0;
@@ -47,8 +45,39 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
             scale: 0.05
         })
     })
-    console.log(hotels)
-    
+    hotels.forEach((hotel) => {
+        // console.log(hotel.long)
+        if (centerLong == 0 && centerLat == 0) {
+            centerLong = hotel.long;
+            centerLat = hotel.lat;
+        }
+        else {
+            centerLong += hotel.long;
+            centerLat += hotel.lat;
+
+            centerLong = centerLong / 2;
+            centerLat = centerLat / 2;
+        }
+
+        const jeff = new Feature({
+            geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
+            name: hotel.name,
+            key: hotel.id
+        })
+        jeff.setStyle(iconStyle)
+        pins.push(jeff)
+    });
+
+    const vectorSource = new VectorSource({
+        features: pins
+    });
+    const vectorLayer = new VectorLayer({
+        source: vectorSource,
+    });
+    const osmLayer = new TileLayer({
+        preload: Infinity,
+        source: new OSM()
+    });
 
     /*
     overlay
@@ -71,14 +100,12 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     */
     const geoSearch = () => {
         dispatch(clearHotels);
-        dispatch(clearOffers);
-        console.log(map)
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
 
-        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1], checkIn: checkIn, checkOut: checkOut, adults: stay.adult}));
+        dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1]}));
         return (
-            console.log(hotels)
+            console.log(curCenter)
         );
     }
 
@@ -87,42 +114,6 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
     */
 
     useEffect(() => {
-        hotels.map((hotel) => {
-            // console.log(hotel.long)
-            if (centerLong == 0 && centerLat == 0) {
-                centerLong = hotel.long;
-                centerLat = hotel.lat;
-            }
-            else {
-                centerLong += hotel.long;
-                centerLat += hotel.lat;
-    
-                centerLong = centerLong / 2;
-                centerLat = centerLat / 2;
-            }
-    
-            const jeff = new Feature({
-                geometry: new Point(fromLonLat([hotel.long, hotel.lat])),
-                name: hotel.name,
-                key: hotel.id
-            })
-            jeff.setStyle(iconStyle)
-            pins.push(jeff)
-        });
-    
-        const vectorSource = new VectorSource({
-            features: pins
-        });
-        const vectorLayer = new VectorLayer({
-            source: vectorSource,
-        });
-        const osmLayer = new TileLayer({
-            preload: Infinity,
-            source: new OSM()
-        });
-
-
-        
         map = new Map({
             // controls: cont,
 
@@ -153,7 +144,7 @@ export const HotelMap = ({checkIn, checkOut, stay}) => {
                 content.innerHTML = feature.get("name");
             }
         })
-        console.log("rendered map")
+
         return () => map.setTarget(null);
     }, [hotels, container]);
 

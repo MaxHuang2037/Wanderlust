@@ -5,6 +5,7 @@ let amenities = ["SWIMMING_POOL", "SPA", "FITNESS_CENTER", "AIR_CONDITIONING", "
 export const getHotelListCity = async(req, res) => {
     let hotels = [];
     const cityCode = req.query.cityCode
+    console.log(cityCode)
     //ratings: [1, 2, 3, 4, 5]
     amadeus.client.get('/v1/reference-data/locations/hotels/by-city', {cityCode: cityCode, radius: 5}).then(function(response) { //city code is the same as the airport, can change, can change amendities with "amenities: xxxx"
         response.data.forEach(hotel => {
