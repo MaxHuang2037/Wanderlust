@@ -58,7 +58,8 @@ export const getHotelOffers = createAsyncThunk("/hotelsOffers",
 
 const initialState = {
     hotels: [],
-    offer: []
+    singleHotel: [],
+    singleHotelState: ""
 }
 
 // const hotelSlice = createSlice({
@@ -95,9 +96,6 @@ const hotelSlice = createSlice({
     reducers: {
         clearHotels: (state) => {
             state.hotels = []
-        },
-        clearOffers: (state) => {
-            state.offers = []
         }
     },
     extraReducers: (builder) => {
@@ -112,10 +110,14 @@ const hotelSlice = createSlice({
             }
             state.hotels = payload.hotels;
         }).addCase(getHotelOffers.fulfilled, (state, {payload}) => {
+            state.singleHotelState = ""
             if(payload.message) {
-                return window.alert(payload.message)
+                window.alert(payload.message)
+                return window.location.href = "/stays"
             }
-            state.offer = payload
+            state.singleHotel = payload
+        }).addCase(getHotelOffers.pending, (state) => {
+            state.singleHotelState = "p"
         })
     }
 })

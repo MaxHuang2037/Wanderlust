@@ -128,9 +128,9 @@ const userSlice = createSlice({
         })
         .addCase(getTrips.fulfilled, (state, {payload}) => {
             console.log(payload)
-            if(payload.message){
-                return window.alert(payload.message)
-            }
+            // if(payload.message){
+            //     return window.alert(payload.message)
+            // }
             state.trips = payload
         })
     }

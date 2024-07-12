@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom';
 
 import pinpng from "../../images/pin.png"
 
-export const HotelMap = () => {
+export const HotelMap = ({stay, checkIn, checkOut}) => {
     const dispatch = useDispatch()
     const {hotels} = useSelector((state) => state.hotels)
 
@@ -33,6 +33,7 @@ export const HotelMap = () => {
     */
 
     let map;
+    console.log("NEW MAP CREATED")
 
     let centerLong = 0;
     let centerLat = 0;
@@ -100,6 +101,7 @@ export const HotelMap = () => {
     */
     const geoSearch = () => {
         dispatch(clearHotels);
+        console.log(map)
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
 
@@ -114,6 +116,7 @@ export const HotelMap = () => {
     */
 
     useEffect(() => {
+        console.log("REFERSH")
         map = new Map({
             // controls: cont,
 
@@ -146,7 +149,7 @@ export const HotelMap = () => {
         })
 
         return () => map.setTarget(null);
-    }, [hotels, container]);
+    }, [hotels, container, stay, checkIn, checkOut]);
 
 
     return (

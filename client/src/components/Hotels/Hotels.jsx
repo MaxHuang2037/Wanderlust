@@ -2,7 +2,7 @@ import { HotelList } from './HotelList.jsx'
 import { HotelMap } from './HotelMap.jsx'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { clearHotels, clearOffers, getHotelsCity, getHotelOffers } from '../../features/hotelSlice.js'
+import { clearHotels, getHotelsCity } from '../../features/hotelSlice.js'
 import { FlightDatePicker } from '../UniversalComponents/FlightDatePicker.jsx'
 import { PassengerDropdown } from '../UniversalComponents/PassengerDropdown.jsx'
 
@@ -20,7 +20,6 @@ export const Hotels = () => {
 
     useEffect(() => {
         dispatch(clearHotels())
-        dispatch(clearOffers())
     }, [dispatch])
 
     return (
@@ -40,11 +39,11 @@ export const Hotels = () => {
                 <PassengerDropdown className={styles.people} quantity={stay} setQuantity={setStay} placeholder="guest"/>
             </div>
 
-            <HotelMap checkIn={checkIn} checkOut={checkOut} stay={stay}/>
+            <HotelMap stay={stay} checkIn={checkIn} checkOut={checkOut}/>
             <div className={styles.hotelList}>
                 {
                     hotels.map((hotel) => {
-                        return <HotelList hotel={hotel}/>
+                        return <HotelList hotel={hotel} checkIn={checkIn} checkOut={checkOut} adults={stay.adult}/>
                     })
                 }
             </div>

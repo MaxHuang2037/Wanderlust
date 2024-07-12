@@ -7,20 +7,19 @@ export const getHotelOffers = async(req, res) => {
     let adults = req.query.adults;
     let checkIn = req.query.checkIn;
     let checkOut = req.query.checkOut;
-    console.log(id, adults, checkIn, checkOut)
 
     amadeus.client.get('/v3/shopping/hotel-offers', {hotelIds: id, adults: adults, checkInDate: checkIn, checkOutDate: checkOut}).then(function(response) {
         let data = response.data[0]
         let offers = [];
         console.log(response.data[0].offers)
         data.offers.forEach(offer => {
-            offers.push({date: {checkIn: offer.checkInDate, checkOut: offers.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
+            offers.push({date: {checkIn: offer.checkInDate, checkOut: offer.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
         })
 
         ret = {hotel: data.hotel.name, offers: offers}
 
-        console.log(ret)
-        res.status(200).json({offers: ret})
+        console.log(ret.offers[0].date)
+        res.status(200).json(ret)
 
         console.log(response.data)
     }).catch(function(err) {

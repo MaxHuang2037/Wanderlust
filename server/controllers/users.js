@@ -68,7 +68,7 @@ export const updateTrips = async (req, res) => {
         res.status(200).json(trips)
     } catch (err){
         res.status(401).json({message: err.message})
-        console.log(err.message)
+        // console.log(err.message)
     }
 }
 
@@ -80,6 +80,6 @@ export const getTrips = async (req, res) => {
         res.status(200).json(trips)
     } catch(err) {
         res.status(404).json({message: err.message})
-        console.log(err.message)
+        // console.log(err.message)
     }
 }
