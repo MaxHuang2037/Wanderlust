@@ -100,7 +100,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     search geo function
     */
     const geoSearch = () => {
-        dispatch(clearHotels);
+        dispatch(clearHotels());
         console.log(map)
         const curCenter = toLonLat(map.getView().getCenter());
         const zoom = map.getView().getZoom();
@@ -159,8 +159,8 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
                     Search here (zoom in plz)
                 </div>
             </div>
-            <div id="popup" class="ol-popup" className={styles.popupContainer}>
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup" className={styles.popupContainer}>
+                <a href="#" id="popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
         </>

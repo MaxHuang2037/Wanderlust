@@ -10,9 +10,13 @@ import { Hotels } from "./components/Hotels/Hotels";
 import { ThingsToDo } from "./components/ThingsToDo/ThingsToDo";
 import { TripPlanner } from "./components/TripPlanner/TripPlanner";
 import { HotelInfo } from "./components/Hotels/HotelInfo";
+import { TripProgress } from "./components/TripProgress/TripProgress";
+import { Buttons } from "./components/TripProgress/Buttons";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
+    // console.log(user)
+    const [planning, setPlanning] = useState(localStorage.getItem("planning"))
     
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("profile")))
@@ -21,15 +25,17 @@ function App() {
     return (
         <main>
 			<Navbar user={user} setUser={setUser}/>
+            {(user != null && planning == "t") && <TripProgress/>}
 			<Routes>
 				<Route path="/" element={<Home/>}/>
                 <Route path="/auth" element={<Auth/>}/>
                 <Route path="/flights" element={<Flights/>}/>
                 <Route path="/stays" element={<Hotels/>}/>
                 <Route path="/things-to-do" element={<ThingsToDo/>}/>
-                <Route path="/my-trips" element={<TripPlanner/>}/>
+                <Route path="/my-trips" element={<TripPlanner setPlanning={setPlanning}/>}/>
                 <Route path="/hotel" element={<HotelInfo/>}/>
 			</Routes>
+            {(user != null && planning == "t") && <Buttons/>}
 			<Footer/>
         </main>
     );

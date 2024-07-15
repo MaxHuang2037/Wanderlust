@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getHotelOffers } from "../../features/hotelSlice"
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
 import styles from "./styles.module.css"
 
 import loading from "../../images/loading.gif"

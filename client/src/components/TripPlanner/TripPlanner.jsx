@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import { getTrips } from "../../features/userSlice"
 import { Link } from "react-router-dom"
 
-export const TripPlanner = () => {
+export const TripPlanner = ({setPlanning}) => {
     const dispatch = useDispatch()
 
     const {trips} = useSelector((state) => state.auth)
@@ -87,6 +87,13 @@ export const TripPlanner = () => {
         dispatch(updateTrips([...trips, test]))
     }
 
+    const planningTrip = () => {
+        localStorage.setItem("planning", "t")
+        localStorage.setItem("progress", 0)
+        setPlanning(localStorage.getItem("planning"))
+        window.location.href = "/flights"
+    }
+
     useEffect(() => {
         dispatch(getTrips())
     }, [dispatch])
@@ -96,7 +103,10 @@ export const TripPlanner = () => {
             {localStorage.getItem("profile") == undefined ?
                 <h1>Please <Link to="/auth">sign in</Link> to use this functionality</h1> 
                 :
-                <MyTrips trips={trips}/>
+                <div>
+                    <button onClick={() => planningTrip()}>Add Trip</button>
+                    <MyTrips trips={trips}/>
+                </div>
             }
         </div>
     )

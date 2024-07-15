@@ -25,27 +25,23 @@ export const Hotels = () => {
     return (
         <div className={styles.container}>
             <div className={styles.searchBar}>
-                <input className={styles.input} autoComplete='off' id="searchBar" onKeyUp={(e) => {
-                    if(e.key === "Enter") {
-                        // && checkIn != "" && checkOut != "" && stay.adult > 0
-                        console.log(stay.adult)
-                        dispatch(getHotelsCity(document.getElementById("searchBar").value))
-                    }
-                    // else if (e.key === "Enter"){
-                    //     window.alert("Please enter a valid check in and check out date, as well as a valid number of guests")
-                    // }
-                }}/>
+                <input className={styles.input} autoComplete='off' id="searchBar"/>
                 <FlightDatePicker className={styles.datePicker} flightType="roundtrip" setDepDate={setCheckIn} setRetDate={setCheckOut} label1="Check in" label2="Check out"/>
                 <PassengerDropdown className={styles.people} quantity={stay} setQuantity={setStay} placeholder="guest"/>
+                <button className={styles.searchButton} onClick={() => {
+                    dispatch(getHotelsCity(document.getElementById("searchBar").value))
+                }}>Search</button>
             </div>
 
-            <HotelMap stay={stay} checkIn={checkIn} checkOut={checkOut}/>
-            <div className={styles.hotelList}>
-                {
-                    hotels.map((hotel) => {
-                        return <HotelList hotel={hotel} checkIn={checkIn} checkOut={checkOut} adults={stay.adult}/>
-                    })
-                }
+            <div className={styles.bottom}>
+                <HotelMap stay={stay} checkIn={checkIn} checkOut={checkOut}/>
+                <div className={styles.hotelList}>
+                    {
+                        hotels.map((hotel) => {
+                            return <HotelList hotel={hotel} checkIn={checkIn} checkOut={checkOut} adults={stay.adult}/>
+                        })
+                    }
+                </div>
             </div>
         </div>
     );
