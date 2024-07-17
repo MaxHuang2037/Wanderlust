@@ -143,7 +143,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
 
             if (feature) {
                 // console.log(evt.coordinate)
-                popup.setPosition(evt.coordinate); // GAY LINE
+                popup.setPosition(evt.coordinate);
                 content.innerHTML = feature.get("name");
             }
         })
@@ -155,9 +155,9 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     return (
         <>
             <div className={styles.mapContainer} id="map">
-                <div id="geoSearch" className={styles.geoSearch} onClick={geoSearch}>
-                    Search here (zoom in plz)
-                </div>
+                <button id="geoSearch" className={styles.geoSearch} onClick={geoSearch}>
+                    Search map
+                </button>
             </div>
             <div id="popup" className={styles.popupContainer}>
                 <a href="#" id="popup-closer"></a>

@@ -27,11 +27,11 @@ export const FlightOffers = ({flightToggle}) => {
                 (flight_offers_return_state === "e" && <h1>No flights exist</h1>)
             }
 
-            {flightToggle == "departure" && flight_offers.map((offers) => {
-                return <FlightsCompressed offers={offers}/>
+            {flightToggle == "departure" && flight_offers.map((offer) => {
+                return <FlightsCompressed offer={offer} type="dep"/>
             })}
-            {flightToggle == "return" && flight_offers_return.map((offers) => {
-                return <FlightsCompressed offers={offers}/>
+            {flightToggle == "return" && flight_offers_return.map((offer) => {
+                return <FlightsCompressed offer={offer} type="ret"/>
             })}
         </div>
     )

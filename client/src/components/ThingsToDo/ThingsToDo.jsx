@@ -17,13 +17,14 @@ export const ThingsToDo = () => {
     const {things_to_do, things_to_do_state} = useSelector((state) => state.thingstodo)
 
     let pagination = things_to_do.slice(pageNumber * 24, pageNumber * 24 + 24)
+    let totalPages = Math.floor((things_to_do.length - 1) / 24)
 
     const searchThingsToDo = () => {
         dispatch(getThingsToDo(coords))
     }
 
     const increment = () => {
-        if(pageNumber < Math.floor((things_to_do.length - 1) / 24) && things_to_do.length != 0){
+        if(pageNumber <  totalPages && things_to_do.length != 0){
             changePageNumber(pageNumber + 1)
         }
     }
@@ -48,11 +49,11 @@ export const ThingsToDo = () => {
             </section>
             <ActivitiesList pagination={pagination} things_to_do_state={things_to_do_state} pageNumber={pageNumber}/>
             <div className={styles.pagination}>
-                <button onClick={() => changePageNumber(0)}>First</button>
-                <button onClick={() => decrement()}>Previous</button>
-                <p className={styles.page_number}>{pageNumber + 1}</p>
-                <button onClick={() => increment()}>Next</button>
-                <button onClick={() => changePageNumber(Math.floor((things_to_do.length - 1) / 24))}>Last</button>
+                <button className={styles.pagination_buttons} onClick={() => changePageNumber(0)}>{"<<"}</button>
+                <button className={styles.pagination_buttons} onClick={() => decrement()}>{"<"}</button>
+                <p className={styles.page_number}>{pageNumber + 1} / {totalPages + 1}</p>
+                <button className={styles.pagination_buttons} onClick={() => increment()}>{">"}</button>
+                <button className={styles.pagination_buttons} onClick={() => changePageNumber(Math.floor((things_to_do.length - 1) / 24))}>{">>"}</button>
             </div>
         </div>
     )

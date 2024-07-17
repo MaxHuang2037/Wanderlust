@@ -13,7 +13,12 @@ export const getHotelOffers = async(req, res) => {
         let offers = [];
         console.log(response.data[0].offers)
         data.offers.forEach(offer => {
-            offers.push({date: {checkIn: offer.checkInDate, checkOut: offer.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
+            if(offer.room.typeEstimated){
+                offers.push({date: {checkIn: offer.checkInDate, checkOut: offer.checkOutDate}, room: {beds: offer.room.typeEstimated.beds, bedType: offer.room.typeEstimated.bedType, description: offer.room.description.text}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: offer.price.currency, policy: offer.policies.paymentType})
+            }
+            else{
+                offers.push({date: {checkIn: offer.checkInDate, checkOut: offer.checkOutDate}, room: {beds: 1, bedType: "Single", description: "N/A"}, guests: {adults: offer.guests.adults, children: offer.guests.children}, price: offer.price.total, currency: 237, policy: offer.policies.paymentType})
+            }
         })
 
         ret = {hotel: data.hotel.name, offers: offers}

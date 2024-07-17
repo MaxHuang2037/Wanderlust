@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import styles from "./styles.module.css"
 
 import loading from "../../images/loading.gif"
+import { AddButton } from "../TripProgress/AddButton"
 
 export const HotelInfo = () => {
     const dispatch = useDispatch()
@@ -26,24 +27,28 @@ export const HotelInfo = () => {
     if(singleHotelState == "p") return (<img className={styles.loading_img} src={loading} alt="loading"/>)
 
     return(
-        <div>
-            <h1>
+        <div className={styles.hotelInfo}>
+            <h1 className={styles.hotelTitle}>
                 {singleHotel.hotel}
                 {console.log(singleHotel)}
             </h1>
             {singleHotel.length != 0 &&
-            <div>
+            <div className={styles.hotelDetails}>
                 {
                     singleHotel.offers.map((offer) => {
                         return (
-                            <div>
-                                <div>
-                                    <b>Check in: </b> {offer.date.checkIn}
-                                    <b>Check out: </b> {offer.date.checkOut}
-                                </div>
-                                <div>
-                                    {offer.price}
-                                    {offer.currency}
+                            <div className={styles.oneHotel}>
+                                <div className={styles.importantSection}>
+                                    <div className={styles.dates}>
+                                        <b>Check in: </b> {offer.date.checkIn}
+                                        <br/>
+                                        <b>Check out: </b> {offer.date.checkOut}
+                                    </div>
+
+                                    <div className={styles.price}>
+                                        {offer.price}
+                                        <b> {offer.currency} </b>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -56,7 +61,7 @@ export const HotelInfo = () => {
                                         {offer.room.description}
                                     </p>
                                 </div>
-
+                                {localStorage.getItem("planning") == "t" && <AddButton type="hotel" data={{...singleHotel, offers: offer}}/>}
                             </div>
                         )
                     })

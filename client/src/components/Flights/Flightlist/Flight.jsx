@@ -1,17 +1,17 @@
 import styles from "../styles.module.css"
 
-export const Flight = ({offers, setShowDetails}) => {
+export const Flight = ({offer, setShowDetails}) => {
     const close = () => {
         setShowDetails(false)
         document.getElementById("main_body").style.overflowY = "auto"
     }
-    console.log(offers)
+    console.log(offer)
     return(
         <div className={styles.flight} id={styles.full}>
-            <h1 className={styles.title}>${offers.price} - {offers.cabin}</h1>
-            <h2>Total duration: {offers.totalDuration.slice(2)}</h2>
+            <h1 className={styles.title}>${offer.price} - {offer.cabin}</h1>
+            <h2>Total duration: {offer.totalDuration.slice(2)}</h2>
             <div className={styles.segments}>
-                {offers.segments.map((seg) => {
+                {offer.segments.map((seg) => {
                     return <>
                         <div>
                             <h3 className={styles.text}>{seg.departure.iataCode}: {seg.departure.at.replace("T", " at ")}</h3>

@@ -80,15 +80,17 @@ p{
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
+    border-width: 2px;
 }
     
 .flight{
     display: flex;
     justify-content: space-between;
-    border-style: solid;
     margin-bottom: 1rem;
     border-radius: 2rem;
     padding: 1rem;
+    background-color: #CDE8E5;
+
 }
         
 .button_container{

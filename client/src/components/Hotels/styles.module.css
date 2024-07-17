@@ -1,7 +1,6 @@
 .mapContainer {
     display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: end;
     width: 50vw;
     height: 85vh;
 }
@@ -19,17 +18,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75vw;
+    width: 73vw;
 }
 
 .geoSearch {
-    padding-left: 0.5rem;
-    border-radius: 1rem;
+    z-index: 1;
     border-style: solid;
-    cursor: pointer;
-
-    font-weight: bold;
-
+    border-radius: 1rem;
+    border-width: 2px;
+    width: 150px;
+    padding: 1rem 0 1rem 0;
+    font-size: 20px;
+    position: absolute;
+    margin: .5rem;
+    background-color: #CDE8E5;
 }
 
 .searchBar {
@@ -43,7 +45,7 @@
     
     background-color: #CDE8E5;
     
-    padding: 1rem 1rem 1.5rem 1rem;
+    padding: 1rem 2rem 1rem 2rem;
     margin-bottom: 1rem;
 }
 
@@ -56,6 +58,7 @@
 .searchButton {
     border-style: solid;
     border-radius: 1rem;
+    border-width: 2px;
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
@@ -64,26 +67,18 @@
 .hotelList {
     width: 20vw;
     height: 85vh;
-    overflow: scroll;
-    scrollbar-width: none;
-
-    padding-top: 15px;
-    padding-right: 15px;
-    padding-left: 15px;
-
-    background-color: #CDE8E5;
-    border-radius: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    padding-right: 1rem;
 }
 
 .listElement {
     border-radius: 1rem;
-    border-style: solid;
     list-style-type: none;
 
     margin-bottom: 15px;
-
-    background-color: white;
-    
+    background-color: #CDE8E5;
 }
 
 .listElement:hover {
@@ -93,4 +88,35 @@
 .popupContainer {
     background-color: white;
     border-style: solid;
+}
+
+.hotelInfo {
+    background-color: #CDE8E5;
+    border-radius: 1rem;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+.hotelTitle {
+    padding-bottom: 5vh;
+    text-align: center;
+}
+
+.hotelDetails {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.oneHotel {
+    display: flex;
+    flex-direction: column;
+}
+
+.importantSection {
+    display: flex;
+    flex-direction: row;
+}
+
+.dates {
+    flex-grow: 1;
 }

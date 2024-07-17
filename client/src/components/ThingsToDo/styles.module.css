@@ -45,6 +45,7 @@
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
+    border-width: 2px;
 }
 
 .activity_container{
@@ -70,18 +71,22 @@
 
 .pagination{
     display: flex;
-    justify-content: center;
+    /* justify-content: center */
 }
 
 .activity{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    border-style: solid;
     border-radius: 2rem;
-    border-width: 1px;
     margin: 0;
     padding: 0;
+    background-color: #CDE8E5;
+}
+
+.pagination_buttons{
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif
 }
 
 .main_container{

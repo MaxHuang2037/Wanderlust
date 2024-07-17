@@ -91,6 +91,7 @@ export const TripPlanner = ({setPlanning}) => {
         localStorage.setItem("planning", "t")
         localStorage.setItem("progress", 0)
         setPlanning(localStorage.getItem("planning"))
+        localStorage.setItem("trip", JSON.stringify({}))
         window.location.href = "/flights"
     }
 
