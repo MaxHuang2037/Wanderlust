@@ -63,6 +63,7 @@ export const editProfile = async (req, res) => {
 export const updateTrips = async (req, res) => {
     const new_trips = req.body
     const UID = req.userId
+    console.log(new_trips)
     try{
         const {trips} = await User.findOneAndUpdate({_id: UID}, {trips: new_trips}, {new: true})
         res.status(200).json(trips)

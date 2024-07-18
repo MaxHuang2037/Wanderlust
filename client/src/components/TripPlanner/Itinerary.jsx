@@ -12,7 +12,7 @@ export const Itinerary = ({activities}) => {
                         </div>
                         <div>
                             <h2 className={styles.title}>{activity.name}</h2>
-                            {(activity.price.amount != undefined && activity.price.amount != "0.0") && <h3 className={styles.amount}>${activity.price.amount} {activity.price.currencyCode}</h3>}
+                            {(activity.price.amount !== undefined && activity.price.amount !== "0.0") && <h3 className={styles.amount}>${activity.price.amount} {activity.price.currencyCode}</h3>}
                             <p className={styles.description}>{activity.description}</p>
                         </div>
                     </div>

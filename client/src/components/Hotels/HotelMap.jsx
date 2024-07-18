@@ -9,14 +9,12 @@ import Feature from 'ol/Feature.js';
 import { Icon, Style } from "ol/style";
 import { fromLonLat, toLonLat } from 'ol/proj';
 import Overlay from 'ol/Overlay.js';
-import {Control, defaults as defaultControls} from 'ol/control.js';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { clearHotels, getHotelListGeo } from '../../features/hotelSlice.js'
 
 import styles from './styles.module.css'
 import { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 
 import pinpng from "../../images/pin.png"
 
@@ -33,7 +31,6 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     */
 
     let map;
-    console.log("NEW MAP CREATED")
 
     let centerLong = 0;
     let centerLat = 0;
@@ -48,7 +45,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     })
     hotels.forEach((hotel) => {
         // console.log(hotel.long)
-        if (centerLong == 0 && centerLat == 0) {
+        if (centerLong === 0 && centerLat === 0) {
             centerLong = hotel.long;
             centerLat = hotel.lat;
         }
@@ -86,7 +83,6 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
 
     const container = document.getElementById('popup');
     const content = document.getElementById('popup-content');
-    const closer = document.getElementById('popup-closer');
     const popup = new Overlay({
         element: container,
         autoPan: {
@@ -103,7 +99,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
         dispatch(clearHotels());
         console.log(map)
         const curCenter = toLonLat(map.getView().getCenter());
-        const zoom = map.getView().getZoom();
+        // const zoom = map.getView().getZoom();
 
         dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1]}));
         return (
@@ -116,7 +112,6 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     */
 
     useEffect(() => {
-        console.log("REFERSH")
         map = new Map({
             // controls: cont,
 
@@ -124,7 +119,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
             layers: [osmLayer, vectorLayer],
             view: new View({
                 center: fromLonLat([centerLong, centerLat]),
-                zoom: (centerLong == 0 && centerLat == 0) ? 0 : 13
+                zoom: (centerLong === 0 && centerLat === 0) ? 0 : 13
             }),
             overlays: [popup],
         });
@@ -134,7 +129,7 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
             - Lune
         */
         
-        const element = popup.getElement();
+        // const element = popup.getElement();
         map.on("click", (evt) => {
             const feature = map.forEachFeatureAtPixel(evt.pixel, 
                 (feature) => {

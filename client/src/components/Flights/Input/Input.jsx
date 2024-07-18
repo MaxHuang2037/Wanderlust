@@ -17,7 +17,7 @@ import styles from "../styles.module.css"
 const passengers = {adult: 0, youth: 0, child: 0, infant: 0}
 const codes = {origCode: "", destCode: ""}
 
-export const Input = ({flightType, setFlightType, flightToggle, setFlightToggle}) => {
+export const Input = ({flightType, setFlightType, setFlightToggle}) => {
     const [quantity, setQuantity] = useState(passengers)
     const [iataCodes, setIataCodes] = useState(codes)
     const [depDate, setDepDate] = useState("")
@@ -27,7 +27,7 @@ export const Input = ({flightType, setFlightType, flightToggle, setFlightToggle}
     const searchFlights = () => {
         dispatch(clearFlightOffers())
         dispatch(getFlightOffers({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: depDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
-        if(flightType == "roundtrip"){
+        if(flightType === "roundtrip"){
             dispatch(clearFlightOffersReturn())
             dispatch(getFlightOffersReturn({origCode: iataCodes.origCode, destCode: iataCodes.destCode, depDate: retDate, adults: quantity.adult + quantity.youth, children: quantity.child, infants: quantity.infant}))
         }

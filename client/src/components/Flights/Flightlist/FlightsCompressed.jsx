@@ -29,7 +29,7 @@ export const FlightsCompressed = ({offer, type}) => {
                     return <p id={styles.ptag}>{seg.departure.iataCode}: {seg.departure.at.replace("T", " at ")} → {seg.arrival.iataCode}: {seg.arrival.at.replace("T", " at ")}</p>
                 })}
             </div>
-            {localStorage.getItem("planning") == "t" && <AddButton type={`${type}Flight`} data={offer}/>}
+            {localStorage.getItem("planning") === "t" && <AddButton type={`${type}Flight`} data={offer}/>}
         </div>
     )
 }

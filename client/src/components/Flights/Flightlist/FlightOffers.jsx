@@ -16,21 +16,21 @@ export const FlightOffers = ({flightToggle}) => {
     }, [dispatch])
     return(
         <div className={styles.flight_offers}>
-            {flightToggle == "departure" ? 
+            {flightToggle === "departure" ? 
                 (flight_offers_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>)
                 :
                 (flight_offers_return_state === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>)
             }
-            {flightToggle == "departure" ?
+            {flightToggle === "departure" ?
                 (flight_offers_state === "e" && <h1>No flights exist</h1>)
                 :
                 (flight_offers_return_state === "e" && <h1>No flights exist</h1>)
             }
 
-            {flightToggle == "departure" && flight_offers.map((offer) => {
+            {flightToggle === "departure" && flight_offers.map((offer) => {
                 return <FlightsCompressed offer={offer} type="dep"/>
             })}
-            {flightToggle == "return" && flight_offers_return.map((offer) => {
+            {flightToggle === "return" && flight_offers_return.map((offer) => {
                 return <FlightsCompressed offer={offer} type="ret"/>
             })}
         </div>

@@ -1,6 +1,6 @@
 import { FlightOffers } from "./Flightlist/FlightOffers"
 import { Input } from "./Input/Input"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import styles from "./styles.module.css"
 
 export const Flights = () => {
@@ -9,8 +9,8 @@ export const Flights = () => {
 
     return(
         <div>
-            <Input flightType={flightType} setFlightType={setFlightType} flightToggle={flightToggle} setFlightToggle={setFlightToggle}/>
-            {flightType == "roundtrip" &&
+            <Input flightType={flightType} setFlightType={setFlightType} setFlightToggle={setFlightToggle}/>
+            {flightType === "roundtrip" &&
                 <div className={styles.roundtrip_toggle}>
                     <h2 id="departure" className={styles.roundtrip_buttons} onClick={() => {
                         setFlightToggle("departure")

@@ -12,7 +12,7 @@ const guests = {adult: 0, youth: 0, child: 0, infant: 0}
 
 export const Hotels = () => {
     const dispatch = useDispatch()
-    const {hotels, offers} = useSelector((state) => state.hotels)
+    const {hotels} = useSelector((state) => state.hotels)
 
     let [checkIn, setCheckIn] = useState("")
     let [checkOut, setCheckOut] = useState("")

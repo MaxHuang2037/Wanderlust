@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import loading from "../../images/loading.gif"
 import { useEffect } from "react"

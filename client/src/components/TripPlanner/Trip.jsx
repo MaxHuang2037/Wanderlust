@@ -16,7 +16,7 @@ export const Trip = ({trip}) => {
             </div>
             <div className={styles.segments}>
                 <TripFlight offers={trip.depFlight}/>
-                {trip.retFlight != undefined && <TripFlight offers={trip.retFlight}/>}
+                {trip.retFlight !== undefined && <TripFlight offers={trip.retFlight}/>}
             </div>
             <h1>Hotel</h1>
                 <Hotel hotel={trip.hotel}/>

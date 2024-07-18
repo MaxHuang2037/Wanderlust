@@ -1,4 +1,4 @@
-import { Link, redirect } from "react-router-dom"
+import { Link } from "react-router-dom"
 import styles from "./styles.module.css"
 import { useEffect } from "react"
 import { jwtDecode } from "jwt-decode"
@@ -12,11 +12,11 @@ export const Navbar = ({user, setUser}) => {
             const decodedToken = jwtDecode(token)
             
             if (decodedToken.exp * 1000 < new Date().getTime()) logOut()
-            }
-    }, [])
+        }
+    }, [user])
 
     const logOut = () => {
-        if(localStorage.getItem("planning") == "t"){
+        if(localStorage.getItem("planning") === "t"){
             let bool = window.confirm("Some changes may be unsaved, leave anyways?")
             if(!bool) return
         }
@@ -26,7 +26,7 @@ export const Navbar = ({user, setUser}) => {
     }
 
     const navbarRedirect = (link) => {
-        if(localStorage.getItem("planning") == "t"){
+        if(localStorage.getItem("planning") === "t"){
             let bool = window.confirm("Some changes may be unsaved, leave anyways?")
             if(!bool) return
         }

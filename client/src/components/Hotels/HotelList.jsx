@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { redirect } from "react-router-dom";
 
 import {HotelOverlay} from "./HotelOverlay.jsx";
 
@@ -8,7 +7,7 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
     const [getOverlayOpen, setOverlayOpen] = useState(false)
 
     const redirect = () => {
-        if(checkIn == "" || checkOut == ""){
+        if(checkIn === "" || checkOut === ""){
             return alert("Please enter a check in and check out date")
         }
         if(adults <= 0){

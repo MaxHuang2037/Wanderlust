@@ -15,11 +15,11 @@ export const Flight = ({offer, setShowDetails}) => {
                     return <>
                         <div>
                             <h3 className={styles.text}>{seg.departure.iataCode}: {seg.departure.at.replace("T", " at ")}</h3>
-                            {seg.departure.terminal != undefined && <p className={styles.text}>Terminal: {seg.departure.terminal}</p>}
+                            {seg.departure.terminal !== undefined && <p className={styles.text}>Terminal: {seg.departure.terminal}</p>}
                             <p className={styles.text}>Carrier: {seg.carrier}</p>
                             <p className={styles.text}>Duration: {seg.duration.slice(2)}</p>
                             <h3 className={styles.text}>{seg.arrival.iataCode}: {seg.arrival.at.replace("T", " at ")}</h3>
-                            {seg.arrival.terminal != undefined && <p className={styles.text}>Terminal: {seg.arrival.terminal}</p>}
+                            {seg.arrival.terminal !== undefined && <p className={styles.text}>Terminal: {seg.arrival.terminal}</p>}
                         </div>
                         <div id={styles.right_arrow} className={styles.arrow_container}>
                             <h1 className={styles.arrow}>{"→"}</h1>

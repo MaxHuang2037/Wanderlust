@@ -25,7 +25,7 @@ function App() {
     return (
         <main>
 			<Navbar user={user} setUser={setUser}/>
-            {(user != null && planning == "t") && <TripProgress/>}
+            {(user != null && planning === "t") && <TripProgress/>}
 			<Routes>
 				<Route path="/" element={<Home/>}/>
                 <Route path="/auth" element={<Auth/>}/>
@@ -35,7 +35,7 @@ function App() {
                 <Route path="/my-trips" element={<TripPlanner setPlanning={setPlanning}/>}/>
                 <Route path="/hotel" element={<HotelInfo/>}/>
 			</Routes>
-            {(user != null && planning == "t") && <Buttons/>}
+            {(user != null && planning === "t") && <Buttons/>}
 			<Footer/>
         </main>
     );

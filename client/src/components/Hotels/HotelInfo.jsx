@@ -24,7 +24,7 @@ export const HotelInfo = () => {
     }, [dispatch])
     console.log(singleHotelState)
     
-    if(singleHotelState == "p") return (<img className={styles.loading_img} src={loading} alt="loading"/>)
+    if(singleHotelState === "p") return (<img className={styles.loading_img} src={loading} alt="loading"/>)
 
     return(
         <div className={styles.hotelInfo}>
@@ -32,7 +32,7 @@ export const HotelInfo = () => {
                 {singleHotel.hotel}
                 {console.log(singleHotel)}
             </h1>
-            {singleHotel.length != 0 &&
+            {singleHotel.length !== 0 &&
             <div className={styles.hotelDetails}>
                 {
                     singleHotel.offers.map((offer) => {
@@ -61,7 +61,7 @@ export const HotelInfo = () => {
                                         {offer.room.description}
                                     </p>
                                 </div>
-                                {localStorage.getItem("planning") == "t" && <AddButton type="hotel" data={{...singleHotel, offers: offer}}/>}
+                                {localStorage.getItem("planning") === "t" && <AddButton type="hotel" data={{...singleHotel, offers: offer}}/>}
                             </div>
                         )
                     })

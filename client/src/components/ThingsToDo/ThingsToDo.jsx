@@ -24,13 +24,13 @@ export const ThingsToDo = () => {
     }
 
     const increment = () => {
-        if(pageNumber <  totalPages && things_to_do.length != 0){
+        if(pageNumber <  totalPages && things_to_do.length !== 0){
             changePageNumber(pageNumber + 1)
         }
     }
 
     const decrement = () => {
-        if(pageNumber > 0 && things_to_do.length != 0){
+        if(pageNumber > 0 && things_to_do.length !== 0){
             changePageNumber(pageNumber - 1)
         }
     }

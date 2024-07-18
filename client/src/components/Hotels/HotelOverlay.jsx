@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearOffers, getHotelOffers } from '../../features/hotelSlice.js';
 
-import styles from "./styles.module.css";
-
 export const HotelOverlay = (hotel) => {
     const dispatch = useDispatch()
     const {offers} = useSelector((state) => state.hotels)
@@ -11,7 +9,7 @@ export const HotelOverlay = (hotel) => {
     useEffect(() => {
         dispatch(clearOffers())
         dispatch(getHotelOffers(hotel.id))
-    }, [dispatch])
+    }, [dispatch, hotel.id])
 
     return (
         <div>
