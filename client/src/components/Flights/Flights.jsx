@@ -1,7 +1,7 @@
 import { FlightOffers } from "./Flightlist/FlightOffers"
-import { Input } from "./Input/Input"
 import { useState } from "react"
 import styles from "./styles.module.css"
+import { FlightInput } from "./Input/FlightInput"
 
 export const Flights = () => {
     const [flightType, setFlightType] = useState("oneway")
@@ -9,7 +9,7 @@ export const Flights = () => {
 
     return(
         <div>
-            <Input flightType={flightType} setFlightType={setFlightType} setFlightToggle={setFlightToggle}/>
+            <FlightInput flightType={flightType} setFlightType={setFlightType} setFlightToggle={setFlightToggle}/>
             {flightType === "roundtrip" &&
                 <div className={styles.roundtrip_toggle}>
                     <h2 id="departure" className={styles.roundtrip_buttons} onClick={() => {

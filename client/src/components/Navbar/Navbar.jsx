@@ -11,9 +11,13 @@ export const Navbar = ({user, setUser}) => {
         if(token){
             const decodedToken = jwtDecode(token)
             
-            if (decodedToken.exp * 1000 < new Date().getTime()) logOut()
+            if (decodedToken.exp * 1000 < new Date().getTime()){
+                logOut()
+                localStorage.setItem("planning", "f")
+                localStorage.setItem("trip", JSON.parse({}))
+            }
         }
-    }, [user])
+    }, [])
 
     const logOut = () => {
         if(localStorage.getItem("planning") === "t"){

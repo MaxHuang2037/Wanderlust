@@ -22,7 +22,7 @@ export const TripPlanner = ({setPlanning}) => {
 
     return(
         <div>
-            {localStorage.getItem("profile") === undefined ?
+            {localStorage.getItem("profile") === null ?
                 <h1>Please <Link to="/auth">sign in</Link> to use this functionality</h1> 
                 :
                 <div>

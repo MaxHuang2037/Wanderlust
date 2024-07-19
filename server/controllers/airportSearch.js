@@ -23,6 +23,6 @@ export const getAirports = async(req, res) => {
         res.status(200).json({airports: airports, type: type})
     }).catch(function(err){
         console.log(err)
-        res.status(err.description[0].status).json({type: type, message: err.description[0].detail})
+        res.status(err.description[0].status).json({type: type, message: err.description[0].title})
     })
 }

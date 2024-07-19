@@ -22,7 +22,7 @@ export const getCities = async(req, res) => {
         res.status(200).json({cities: cities})
     }).catch(function(err){
         console.log(err)
-        res.status(err.description[0].status).json({message: err.description[0].detail})
+        res.status(err.description[0].status).json({message: err.description[0].title})
     })
 }
 
@@ -40,6 +40,6 @@ export const getThingsToDo = async(req, res) => {
         res.status(200).json({thingsToDo: thingsToDo})
     }).catch(function(err){
         console.log(err)
-        res.status(err.description[0].status).json({message: err.description[0].detail})
+        res.status(err.description[0].status).json({message: err.description[0].title})
     })
 }

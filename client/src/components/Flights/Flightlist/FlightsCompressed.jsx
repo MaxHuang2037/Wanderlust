@@ -3,7 +3,7 @@ import styles from "../styles.module.css"
 import { Flight } from "./Flight"
 import { useState } from "react"
 
-export const FlightsCompressed = ({offer, type}) => {
+export const FlightsCompressed = ({offer, type, id}) => {
     const departureTime = offer.segments[0].departure.at.replace("T", " at ")
     const numStops = offer.segments.length - 1
     const arrivalTime = offer.segments[numStops].arrival.at.replace("T", " at ")
@@ -29,7 +29,7 @@ export const FlightsCompressed = ({offer, type}) => {
                     return <p id={styles.ptag}>{seg.departure.iataCode}: {seg.departure.at.replace("T", " at ")} → {seg.arrival.iataCode}: {seg.arrival.at.replace("T", " at ")}</p>
                 })}
             </div>
-            {localStorage.getItem("planning") === "t" && <AddButton type={`${type}Flight`} data={offer}/>}
+            {localStorage.getItem("planning") === "t" && <AddButton type={`${type}Flight`} data={offer} id={id}/>}
         </div>
     )
 }

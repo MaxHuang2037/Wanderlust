@@ -5,10 +5,11 @@ import styles from "./styles.module.css"
 
 import loading from "../../images/loading.gif"
 import { AddButton } from "../TripProgress/AddButton"
+import { useNavigate } from "react-router-dom"
 
 export const HotelInfo = () => {
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     
     const {singleHotel, singleHotelState} = useSelector((state) => state.hotels)
     console.log("he")
@@ -30,7 +31,6 @@ export const HotelInfo = () => {
         <div className={styles.hotelInfo}>
             <h1 className={styles.hotelTitle}>
                 {singleHotel.hotel}
-                {console.log(singleHotel)}
             </h1>
             {singleHotel.length !== 0 &&
             <div className={styles.hotelDetails}>
@@ -61,13 +61,14 @@ export const HotelInfo = () => {
                                         {offer.room.description}
                                     </p>
                                 </div>
-                                {localStorage.getItem("planning") === "t" && <AddButton type="hotel" data={{...singleHotel, offers: offer}}/>}
+                                {localStorage.getItem("planning") === "t" && <AddButton type="hotel" data={{...singleHotel, offers: offer}} id={"htl"}/>}
                             </div>
                         )
                     })
                 }
             </div>
             }
+            <button className={styles.searchButton} onClick={() => navigate(-1)}>Back</button>
         </div>
     )
 }

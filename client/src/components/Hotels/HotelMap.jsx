@@ -18,9 +18,11 @@ import { useEffect } from 'react';
 
 import pinpng from "../../images/pin.png"
 
-export const HotelMap = ({stay, checkIn, checkOut}) => {
+export const HotelMap = () => {
     const dispatch = useDispatch()
     const {hotels} = useSelector((state) => state.hotels)
+
+    // const [toggle, setToggle] = useState()
 
     useEffect(() => {
         dispatch(clearHotels())
@@ -95,16 +97,11 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
     /*
     search geo function
     */
-    const geoSearch = () => {
-        dispatch(clearHotels());
-        console.log(map)
-        const curCenter = toLonLat(map.getView().getCenter());
-        // const zoom = map.getView().getZoom();
 
+    const geoSearch = () => {
+        const curCenter = toLonLat(map.getView().getCenter());
+        dispatch(clearHotels());
         dispatch(getHotelListGeo({long: curCenter[0], lat: curCenter[1]}));
-        return (
-            console.log(curCenter)
-        );
     }
 
     /*
@@ -142,15 +139,15 @@ export const HotelMap = ({stay, checkIn, checkOut}) => {
                 content.innerHTML = feature.get("name");
             }
         })
+        console.log("HEHEHEHE")
 
         return () => map.setTarget(null);
-    }, [hotels, container, stay, checkIn, checkOut]);
-
+    });
 
     return (
         <>
             <div className={styles.mapContainer} id="map">
-                <button id="geoSearch" className={styles.geoSearch} onClick={geoSearch}>
+                <button id="geoSearch" className={styles.geoSearch} onClick={() => geoSearch()}>
                     Search map
                 </button>
             </div>

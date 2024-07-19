@@ -1,7 +1,7 @@
 import { AddButton } from "../TripProgress/AddButton"
 import styles from "./styles.module.css"
 
-export const Activity = ({offer}) => {
+export const Activity = ({offer, id}) => {
     console.log(offer)
     return(
         <div className={styles.activity}>
@@ -14,7 +14,7 @@ export const Activity = ({offer}) => {
                 {(offer.price.amount !== undefined && offer.price.amount !== "0.0") && <h3 className={styles.amount}>${offer.price.amount} {offer.price.currencyCode}</h3>}
                 <p className={styles.description}>{offer.description}</p>
             </div>
-            {localStorage.getItem("planning") === "t" && <AddButton type="activity" data={offer}/>}
+            {localStorage.getItem("planning") === "t" && <AddButton type="activity" data={offer} id={id}/>}
         </div>
     )
 }

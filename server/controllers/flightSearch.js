@@ -33,7 +33,7 @@ export const getFlights = async(req, res) => {
         res.status(200).json(flights)
     }).catch(function(err){
         console.log(err)
-        res.status(err.description[0].status).json({message: err.description[0].detail})
+        res.status(err.description[0].status).json({message: err.description[0].title})
     });
 }
 

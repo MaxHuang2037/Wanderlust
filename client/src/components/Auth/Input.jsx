@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-const Input = ({name, type, setShowPassword, placeholder, handleChange}) => {
+export const Input = ({name, type, setShowPassword, placeholder, handleChange}) => {
     const handlePassword = () => {
         setShowPassword((prev) => !prev)
     }
@@ -19,5 +19,3 @@ const Input = ({name, type, setShowPassword, placeholder, handleChange}) => {
         </>
     )
 }
-
-export default Input

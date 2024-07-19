@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { CityDrodown } from "./CityDropdown"
+import { CityDropdown } from "./CityDropdown.jsx"
 import { PassengerDropdown } from "../../UniversalComponents/PassengerDropdown"
 import { FlightDatePicker } from "../../UniversalComponents/FlightDatePicker"
 import { useDispatch } from "react-redux"
@@ -17,7 +17,7 @@ import styles from "../styles.module.css"
 const passengers = {adult: 0, youth: 0, child: 0, infant: 0}
 const codes = {origCode: "", destCode: ""}
 
-export const Input = ({flightType, setFlightType, setFlightToggle}) => {
+export const FlightInput = ({flightType, setFlightType, setFlightToggle}) => {
     const [quantity, setQuantity] = useState(passengers)
     const [iataCodes, setIataCodes] = useState(codes)
     const [depDate, setDepDate] = useState("")
@@ -59,8 +59,8 @@ export const Input = ({flightType, setFlightType, setFlightToggle}) => {
                 </div>
             </section>
             <section className={styles.section}>
-                <CityDrodown iataCodes={iataCodes} setIataCodes={setIataCodes} type="from"/>
-                <CityDrodown iataCodes={iataCodes} setIataCodes={setIataCodes} type="to"/>
+                <CityDropdown iataCodes={iataCodes} setIataCodes={setIataCodes} type="from"/>
+                <CityDropdown iataCodes={iataCodes} setIataCodes={setIataCodes} type="to"/>
                 <FlightDatePicker setDepDate={setDepDate} setRetDate={setRetDate} flightType={flightType} label1="Departure" label2="Return"/>
                 <PassengerDropdown quantity={quantity} setQuantity={setQuantity} placeholder="Passenger"/>
             </section>

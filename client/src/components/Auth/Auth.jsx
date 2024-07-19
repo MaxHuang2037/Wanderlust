@@ -1,8 +1,8 @@
-import { useState } from "react"
-import Input from "./Input"
 import styles from "./styles.module.css"
+import { useState } from "react"
 import {useDispatch} from "react-redux"
 import { signUp, signIn } from "../../features/userSlice"
+import { Input } from "./Input.jsx"
 
 const initialState = {firstName: "", lastName: "", email: "", password: "", confirmPassword: ""}
 

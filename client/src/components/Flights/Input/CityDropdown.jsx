@@ -5,7 +5,7 @@ import { getAirports, clearAirportsTo, clearAirportsFrom } from "../../../featur
 import styles from "../styles.module.css"
 import { Airport } from "./Airport"
 
-export const CityDrodown = ({type, iataCodes, setIataCodes}) => {
+export const CityDropdown = ({type, iataCodes, setIataCodes}) => {
     const dispatch = useDispatch()
     const {airports_to, airports_from, airports_to_state, airports_from_state} = useSelector((state) => state.flight)
     const ph = (type === "from") ? "From (city)" : "To (city)"

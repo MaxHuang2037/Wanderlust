@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { CityInput } from "./CityInput"
+import { CityInput } from "../UniversalComponents/CityInput.jsx"
 import { useSelector } from "react-redux"
 
 import styles from "./styles.module.css"
