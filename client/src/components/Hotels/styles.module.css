@@ -47,6 +47,7 @@
     
     padding: 1rem 2rem 1rem 2rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .input {
@@ -120,4 +121,29 @@
 
 .dates {
     flex-grow: 1;
+}
+
+@media (max-width: 1150px) {
+    .bottom{
+        display: flex;
+        flex-direction: column;
+    }
+    .searchBar{
+        flex-direction: column;
+        width: 300px;
+    }
+    .mapContainer{
+        width: 100%;
+    }
+    .hotelList{
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .hotel_element{
+        width: 300px;
+    }
 }

@@ -1,3 +1,26 @@
+.pageTitle {
+    font-size: 2em;
+    margin-bottom: 3vh;
+    margin-top: 2vh;
+}
+
+.tripShort {
+    background-color: #CDE8E5;
+    border-radius: 1rem;
+    margin-bottom: 2vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.tripPhoto {
+    object-fit: cover;
+}
+
+.shortDetails {
+
+}
+
 .horizontal_section{
     display: flex;
     justify-content: space-around;
@@ -31,6 +54,22 @@
 .trip_container{
     border-style: solid;
     width: 90vw;
+    margin-bottom: 3vh;
+    border-radius: 1rem;
+    background-color: #CDE8E5;
+}
+
+.hotelDetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hotelName {
+    margin-left: 5vw;
+}
+
+.hotelPrice {
+    margin-right: 5vw;
 }
 
 .activity{

@@ -18,7 +18,7 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
     }
 
     return (
-        <>
+        <div className={styles.hotel_element}>
             <li className={styles.listElement} key={hotel.hotelID} onClick={() => redirect()}> 
                 <h1> {hotel.name} </h1>
                 <h2> {hotel.hotelID} </h2>
@@ -31,6 +31,6 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
                     <HotelOverlay id={hotel.hotelID} name={hotel.name}/>
                 </div>
             }
-        </>
+        </div>
     )
 }

@@ -12,6 +12,8 @@ import { TripPlanner } from "./components/TripPlanner/TripPlanner";
 import { HotelInfo } from "./components/Hotels/HotelInfo";
 import { TripProgress } from "./components/TripProgress/TripProgress";
 import { Buttons } from "./components/TripProgress/Buttons";
+import Profile from "./components/Profile/Profile";
+import { Trip } from "./components/TripPlanner/Trip";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
@@ -34,6 +36,8 @@ function App() {
                 <Route path="/things-to-do" element={<ThingsToDo/>}/>
                 <Route path="/my-trips" element={<TripPlanner setPlanning={setPlanning}/>}/>
                 <Route path="/hotel" element={<HotelInfo/>}/>
+                <Route path="/profile/:uid" element={<Profile user={user} setUser={setUser}/>}/>
+                <Route path="/trip" element={<Trip/>}/>
 			</Routes>
             {(user != null && planning === "t") && <Buttons/>}
 			<Footer/>

@@ -95,7 +95,7 @@ export const getTrips = createAsyncThunk("users/getTrips",
 )
 
 const initialState = {
-    trips: []
+    trips: [],
 }
 
 const userSlice = createSlice({
