@@ -1,17 +1,28 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import styles from "./styles.module.css"
 
 export const AddButton = ({type, data, id}) => {
+    useEffect(() => {
+        if(localStorage.getItem("progress") === "0"){
+            if(localStorage.getItem(type) != null){
+                var elem = document.getElementById(localStorage.getItem(type))
+                elem.innerHTML = "Added"
+                elem.disabled = true
+            }
+        }
+    }) // fix
+
     const add = () => {
         let trip = JSON.parse(localStorage.getItem("trip"))
         
         if(localStorage.getItem("progress") === "0"){
-            if(localStorage.getItem("prevFlight") != null){
-                var elem = document.getElementById(localStorage.getItem("prevFlight"))
+            if(localStorage.getItem(type) != null){
+                console.log(localStorage.getItem(type))
+                var elem = document.getElementById(localStorage.getItem(type))
                 elem.innerHTML = "Add"
                 elem.disabled = false
             }
-            localStorage.setItem("prevFlight", id)
+            localStorage.setItem(type, id)
         }
 
         if(type === "activity"){

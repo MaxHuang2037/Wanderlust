@@ -9,8 +9,7 @@ import { FlightsCompressed } from "./FlightsCompressed"
 export const FlightOffers = ({flightToggle}) => {
     const dispatch = useDispatch()
     const {flight_offers, flight_offers_state, flight_offers_return, flight_offers_return_state} = useSelector((state) => state.flight)
-    let depId = 1
-    let retId = -1
+    let id = 0
 
     useEffect(() => {
         dispatch(clearFlightOffers())
@@ -30,12 +29,12 @@ export const FlightOffers = ({flightToggle}) => {
             }
 
             {flightToggle === "departure" && flight_offers.map((offer) => {
-                depId++
-                return <FlightsCompressed offer={offer} type="dep" id={depId}/>
+                id++
+                return <FlightsCompressed offer={offer} type="dep" id={id}/>
             })}
             {flightToggle === "return" && flight_offers_return.map((offer) => {
-                retId--
-                return <FlightsCompressed offer={offer} type="ret" id={retId}/>
+                id++
+                return <FlightsCompressed offer={offer} type="ret" id={`r${id}`}/>
             })}
         </div>
     )

@@ -1,0 +1,128 @@
+.textHotels{
+    margin: 0;
+    margin-right: 2rem;
+    /* padding: 0; */
+}
+
+.activity{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 2rem;
+    margin: 0 0 0 1rem;
+    padding: 0;
+}
+
+.image_container{
+    display: flex;
+    justify-content: center;
+}
+
+.activity_picture{
+    box-sizing: border-box;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2rem;
+    margin: 1rem;
+}
+
+.title{
+    word-wrap: break-word;
+    /* border-top: solid; */
+}
+
+.subheaders{
+    width: fit-content;
+    margin: 1rem 0 1rem 1rem;
+    border-bottom: solid;
+    padding: 0;
+}
+
+.description{
+    width: fit-content;
+    max-height: 6em;
+    overflow-y: auto;
+    word-wrap: break-word;
+    scrollbar-width: thin;
+    padding: 0;
+    margin: 1rem;
+}
+
+.trip_container{
+    border-style: solid;
+    width: 90vw;
+    margin-bottom: 3vh;
+    border-radius: 1rem;
+    background-color: #CDE8E5;
+}
+
+.segments{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flightSegment{
+    margin: 0 1rem 0 1rem;
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    border-style: solid;
+}
+
+.horizontal_section{
+    display: flex;
+    justify-content: center;
+    padding: .5rem 0 1rem 0;
+}
+
+.activities_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    overflow-x: hidden;
+    gap: 20px;
+    overflow-y: scroll;
+    width: 85vw;
+    height: 450px;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.arrow_container#right_arrow:nth-last-of-type(2){
+    display: none;
+}
+
+.arrow_container#down_arrow{
+    display: none;
+}
+
+.text{
+    padding: 0 1rem 0 1rem;
+}
+
+.smallSection{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 650px){
+    .arrow_container#down_arrow{
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0 1rem 0;
+    }
+    .arrow_container#right_arrow{
+        display: none;
+    }
+    .arrow_container#down_arrow:last-of-type{
+        display: none;
+    }
+    .segments{
+        flex-direction: column;
+    }
+    .textHotels{
+        margin: 0;
+    }
+}

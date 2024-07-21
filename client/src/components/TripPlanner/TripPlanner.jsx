@@ -13,6 +13,8 @@ export const TripPlanner = ({setPlanning}) => {
         setPlanning(localStorage.getItem("planning"))
         localStorage.setItem("progress", 0)
         localStorage.setItem("trip", JSON.stringify({}))
+        localStorage.removeItem("retFlight")
+        localStorage.removeItem("depFlight")
         window.location.href = "/flights"
     }
 

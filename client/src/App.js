@@ -13,7 +13,7 @@ import { HotelInfo } from "./components/Hotels/HotelInfo";
 import { TripProgress } from "./components/TripProgress/TripProgress";
 import { Buttons } from "./components/TripProgress/Buttons";
 import Profile from "./components/Profile/Profile";
-import { Trip } from "./components/TripPlanner/Trip";
+import { Trip } from "./components/Trip/Trip";
 
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
