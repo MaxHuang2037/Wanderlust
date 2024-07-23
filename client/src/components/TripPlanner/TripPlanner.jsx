@@ -8,16 +8,6 @@ export const TripPlanner = ({setPlanning}) => {
     const dispatch = useDispatch()
     const {trips} = useSelector((state) => state.auth)
 
-    const planningTrip = () => {
-        localStorage.setItem("planning", "t")
-        setPlanning(localStorage.getItem("planning"))
-        localStorage.setItem("progress", 0)
-        localStorage.setItem("trip", JSON.stringify({}))
-        localStorage.removeItem("retFlight")
-        localStorage.removeItem("depFlight")
-        window.location.href = "/flights"
-    }
-
     useEffect(() => {
         dispatch(getTrips())
     }, [dispatch])
@@ -28,8 +18,7 @@ export const TripPlanner = ({setPlanning}) => {
                 <h1>Please <Link to="/auth">sign in</Link> to use this functionality</h1> 
                 :
                 <div>
-                    <button onClick={() => planningTrip()}>Add Trip</button>
-                    <MyTrips trips={trips}/>
+                    <MyTrips setPlanning={setPlanning} trips={trips}/>
                 </div>
             }
         </div>

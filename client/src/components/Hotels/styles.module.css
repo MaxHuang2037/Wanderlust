@@ -32,6 +32,11 @@
     position: absolute;
     margin: .5rem;
     background-color: #CDE8E5;
+    transition: all 0.2s ease-in;
+}
+
+.geoSearch:hover{
+    background-color: #a9d6d1;
 }
 
 .searchBar {
@@ -63,6 +68,11 @@
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
+    transition: all 0.2s ease-in;
+}
+
+.searchButton:hover{
+    background-color: #a9d6d1;
 }
 
 .hotelList {
@@ -80,10 +90,13 @@
 
     margin-bottom: 15px;
     background-color: #CDE8E5;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .listElement:hover {
     cursor: pointer;
+    transform: scale(1.04);
 }
 
 .popupContainer {

@@ -139,7 +139,6 @@ export const HotelMap = () => {
                 content.innerHTML = feature.get("name");
             }
         })
-        console.log("HEHEHEHE")
 
         return () => map.setTarget(null);
     });

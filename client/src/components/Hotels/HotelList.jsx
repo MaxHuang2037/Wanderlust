@@ -23,14 +23,6 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
                 <h1> {hotel.name} </h1>
                 <h2> {hotel.hotelID} </h2>
             </li>
-            
-            {
-                getOverlayOpen && 
-                <div>
-                    <div className={styles.overlayBG} onClick={() => setOverlayOpen(!getOverlayOpen)}/>
-                    <HotelOverlay id={hotel.hotelID} name={hotel.name}/>
-                </div>
-            }
         </div>
     )
 }

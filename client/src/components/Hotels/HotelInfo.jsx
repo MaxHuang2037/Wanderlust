@@ -12,7 +12,6 @@ export const HotelInfo = () => {
     const navigate = useNavigate()
     
     const {singleHotel, singleHotelState} = useSelector((state) => state.hotels)
-    console.log("he")
     
     useEffect(() => {
         const queryString = window.location.search
@@ -23,9 +22,12 @@ export const HotelInfo = () => {
         const checkOut = urlParams.get('checkOut')
         dispatch(getHotelOffers({id: id, adults: adults, checkIn: checkIn, checkOut: checkOut}))
     }, [dispatch])
-    console.log(singleHotelState)
     
     if(singleHotelState === "p") return (<img className={styles.loading_img} src={loading} alt="loading"/>)
+    if(singleHotelState === "e") return (<div>
+                                            <h1>404 {":-("}</h1>
+                                            <button className={styles.searchButton} onClick={() => navigate(-1)}>Back</button>
+                                        </div>)
 
     return(
         <div className={styles.hotelInfo}>

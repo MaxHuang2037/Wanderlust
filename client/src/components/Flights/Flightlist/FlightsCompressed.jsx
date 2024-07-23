@@ -16,7 +16,9 @@ export const FlightsCompressed = ({offer, type, id}) => {
 
     return(
         <div className={styles.flight}>
-            {showDetails && <div className={styles.fullscreen_container}><Flight offer={offer} setShowDetails={setShowDetails}></Flight></div>}
+            {showDetails && <div className={styles.fullscreen_container}>
+                                <Flight offer={offer} setShowDetails={setShowDetails}></Flight>
+                            </div>}
             <div>
                 <h1>${offer.price} - {offer.cabin}</h1>
                 <h3 id={styles.header3}>{departureTime} -- {numStops} stop(s) -- {arrivalTime}</h3>

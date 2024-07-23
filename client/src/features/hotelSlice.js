@@ -45,8 +45,8 @@ const hotelSlice = createSlice({
         }).addCase(getHotelOffers.fulfilled, (state, {payload}) => {
             state.singleHotelState = ""
             if(payload.message) {
+                state.singleHotelState = "e"
                 window.alert(payload.message)
-                return window.location.href = "/stays"
             }
             state.singleHotel = payload
         }).addCase(getHotelOffers.pending, (state) => {

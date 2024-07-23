@@ -40,6 +40,11 @@
     padding: 1rem 0 1rem 0;
     font-size: 20px;
     border-width: 2px;
+    transition: all 0.2s ease-in;
+}
+
+.buttons:hover{
+    background-color: #a9d6d1;
 }
 
 .activity_container{
