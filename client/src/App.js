@@ -40,7 +40,7 @@ function App() {
                 <Route path="/trip" element={<Trip/>}/>
 			</Routes>
             {(user != null && planning === "t") && <Buttons/>}
-			<Footer/>
+			{/* <Footer/> */}
         </main>
     );
 }

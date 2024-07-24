@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-export const Input = ({name, type, setShowPassword, placeholder, handleChange}) => {
+export const Input = ({name, type, setShowPassword, placeholder, handleChange, showPassword}) => {
     const handlePassword = () => {
         setShowPassword((prev) => !prev)
     }
@@ -15,7 +15,7 @@ export const Input = ({name, type, setShowPassword, placeholder, handleChange}) 
                 onChange={handleChange}
                 type={type}
             ></input>
-            {name === "password" && <button onClick={handlePassword} type="button">Show Password</button> }
+            <p onClick={handlePassword} className={styles.show}>{name === "password" && (showPassword ? "Hide password" : "Show password")}</p>
         </>
     )
 }

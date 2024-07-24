@@ -31,20 +31,22 @@
     min-width: 300px;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    box-shadow: 25px 24px 8px -8px rgba(0,0,0,0.1);
 }
 
 .buttons{
-    border-style: solid;
+    background-color: #8594d2;
+    color: aliceblue;
     border-radius: 1rem;
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
-    border-width: 2px;
-    transition: all 0.2s ease-in;
+    transition: all 0.25s ease-in;
 }
 
 .buttons:hover{
-    background-color: #a9d6d1;
+    scale: 1.1;
+    background-color: #6377c5;
 }
 
 .activity_container{
@@ -53,10 +55,13 @@
     overflow-x: hidden;
     gap: 20px;
     overflow-y: scroll;
+    scrollbar-width: thin;
     width: 85vw;
     height: 70vh;
     justify-content: center;
     margin-top: 0;
+    box-sizing: border-box;
+    padding: 1rem;
 }
 
 .loading_img{

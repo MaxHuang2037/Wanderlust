@@ -1,4 +1,5 @@
 .mapContainer {
+    position: relative;
     display: flex;
     justify-content: end;
     width: 50vw;
@@ -23,20 +24,20 @@
 
 .geoSearch {
     z-index: 1;
-    border-style: solid;
+    background-color: #8594d2;
+    color: aliceblue;
     border-radius: 1rem;
-    border-width: 2px;
     width: 150px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
     position: absolute;
     margin: .5rem;
-    background-color: #CDE8E5;
-    transition: all 0.2s ease-in;
+    transition: all 0.25s ease-in;
 }
 
 .geoSearch:hover{
-    background-color: #a9d6d1;
+    scale: 1.05;
+    background-color: #6377c5;
 }
 
 .searchBar {
@@ -53,26 +54,28 @@
     padding: 1rem 2rem 1rem 2rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
+
+    box-shadow: 25px 24px 8px -8px rgba(0,0,0,0.1);
 }
 
 .input {
     width: 300px;
     margin-top: 15px;
-    /* width: 100%; */
 }
 
 .searchButton {
-    border-style: solid;
+    background-color: #8594d2;
+    color: aliceblue;
     border-radius: 1rem;
-    border-width: 2px;
     width: 100px;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
-    transition: all 0.2s ease-in;
+    transition: all 0.25s ease-in;
 }
 
 .searchButton:hover{
-    background-color: #a9d6d1;
+    scale: 1.1;
+    background-color: #6377c5;
 }
 
 .hotelList {

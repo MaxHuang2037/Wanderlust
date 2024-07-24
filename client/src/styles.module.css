@@ -5,6 +5,7 @@ main{
     color: #4D869C;
     background-color: #EEF7FF;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 button{
@@ -22,4 +23,14 @@ input:focus {
 
 input{
     border: none;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+    align-items: center;
+    background-color: #CDE8E5;
+    margin-bottom: 10rem;
 }

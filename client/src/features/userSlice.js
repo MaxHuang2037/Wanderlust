@@ -4,6 +4,7 @@ const token = JSON.parse(localStorage.getItem("profile"))?.token
 
 export const signIn = createAsyncThunk("users/signIn", 
     async (data) => {
+        console.log(data)
         try {
             const res = await fetch("/users/signIn", {
                 method: "POST",

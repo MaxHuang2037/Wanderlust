@@ -56,7 +56,7 @@ export const Navbar = ({user, setUser}) => {
                             <img onClick={() => navbarRedirect(`/profile/${user.result._id || user.result.sub}`)} className={styles.pfp} alt={user.result.name} src={user.result.picture}></img>
                     </div> :
                     <Link to="/auth">
-                        <button className={styles.signin}>Sign in</button>
+                        <button className={styles.links}>Sign in</button>
                     </Link>
                 }
             </div>

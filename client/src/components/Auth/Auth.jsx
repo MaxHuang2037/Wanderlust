@@ -29,7 +29,7 @@ export const Auth = () => {
         setShowPassword(false)
     }
     return(
-        <section>
+        <section className={styles.container}>
             <h1>{isSignup ? "Sign up" : "Sign in"}</h1>
             <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
                 {isSignup && (
@@ -39,14 +39,14 @@ export const Auth = () => {
                     </>
                 )}
                 <Input placeholder="Email" handleChange={handleChange} name="email"></Input>
-                <Input placeholder="Password" handleChange={handleChange} name="password" setShowPassword={setShowPassword} type={showPassword ? "text" : "password"}></Input>
+                <Input placeholder="Password" handleChange={handleChange} name="password" setShowPassword={setShowPassword} showPassword={showPassword} type={showPassword ? "text" : "password"}></Input>
                 { isSignup && <Input placeholder="Confirm Password" handleChange={handleChange} name="confirmPassword" type="password"></Input>}
                 <button className={styles.submit_btn} type="submit">
-                    {isSignup ? "Sign Up" : "Sign In"}
+                    <p className={styles.signin}>{isSignup ? "Sign Up" : "Sign In"}</p>
                 </button>
                 {/* {!isSignup && <GoogleLogin onSuccess={googleSuccess} onError={googleError}/>} */}
                 <button onClick={switchMode} type="button">
-                    {isSignup ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
+                    <p className={styles.text}>{isSignup ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</p>
                 </button>
             </form>
         </section>

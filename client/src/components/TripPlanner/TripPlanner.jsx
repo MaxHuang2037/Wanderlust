@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import { getTrips } from "../../features/userSlice"
 import { Link } from "react-router-dom"
 
+import styles from "./styles.module.css"
+
 export const TripPlanner = ({setPlanning}) => {
     const dispatch = useDispatch()
     const {trips} = useSelector((state) => state.auth)

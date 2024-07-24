@@ -3,20 +3,15 @@ import jwt from "jsonwebtoken"
 import User from "../schemas/userSchema.js"
 
 export const signIn = async (req, res) => {
-    const {email, password, picture, name} = req.body
+    const {email, password, picture} = req.body
     try {
         let existingUser = await User.findOne({email})
-        console.log(existingUser)
 
         if(!existingUser && !picture) return res.status(404).json({message: "user dosen't exist"})
 
-        if(picture && !existingUser){
-            existingUser = await User.create({email, name: name, picture})
-        } else if(!picture && !existingUser) {
-            const isPasswordCorrect = await bcrypt.compare(password, existingUser.password)
-    
-            if(!isPasswordCorrect) return res.status(400).json({message: "Invalid credentials"})
-        }
+        const isPasswordCorrect = await bcrypt.compare(password, existingUser.password)
+
+        if(!isPasswordCorrect) return res.status(400).json({message: "Invalid credentials"})
 
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, process.env.JWT_SECRET, {expiresIn: "1hr"})
 
