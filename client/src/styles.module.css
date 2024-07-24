@@ -5,6 +5,7 @@ main{
     color: #4D869C;
     background-color: #EEF7FF;
     overflow-x: hidden;
+    scrollbar-width: none;
     height: 100vh;
 }
 
