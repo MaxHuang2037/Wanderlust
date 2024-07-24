@@ -19,7 +19,7 @@ export const CityInput = ({setCoords}) => {
     }, [dispatch])
 
     return(
-        <div>
+        <div className={styles.parent}>
             <section className={styles.citiesInput}>
                 <input autoComplete="off" className={styles.input} id="city" type="text" placeholder={"City"} onKeyUp={(e) => {
                     if(e.key === "Enter"){

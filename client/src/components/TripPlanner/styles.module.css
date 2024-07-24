@@ -75,3 +75,17 @@
 .amount{
     padding-top: 0;
 }
+
+@media (max-width: 1155px){
+    .tripShort{
+        flex-direction: column;
+        align-items: center;
+        min-width: 350px;
+    }
+    .tripPhoto{
+        margin-top: 1rem;
+    }
+    .addTripSection{
+        min-width: 350px;
+    }
+}

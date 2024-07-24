@@ -6,7 +6,7 @@ export const PassengerDropdown = ({quantity, setQuantity, placeholder}) => {
     const [showDropdown, setShowDropdown] = useState(false)
     let total = quantity.adult + quantity.child + quantity.youth + quantity.infant
     return(
-        <div>
+        <div className={styles.parent}>
             <input onClick={() => setShowDropdown(!showDropdown)} id={styles.passengers} className={styles.input} type="text" placeholder={`${total} ${placeholder}(s)`} readOnly/>
             {showDropdown &&
             <div className={styles.dropdown} id={styles.passenger}>

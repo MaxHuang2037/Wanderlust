@@ -1,6 +1,7 @@
 .section{
     margin: 0;
     flex-direction: row;
+    position: relative;
 }
 
 .section:last-of-type{

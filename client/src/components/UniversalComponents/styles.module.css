@@ -8,6 +8,10 @@
     width: 200px;
 }
 
+.parent{
+    position: relative;
+}
+
 .dropdown{
     margin-top: 5px;
     border-radius: 1rem;
@@ -23,6 +27,7 @@
 .dropdown#passenger{
     scrollbar-width: none;
     max-height: 255px;
+    z-index: 2;
 }
 
 #passengers.input:hover{
