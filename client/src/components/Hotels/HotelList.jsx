@@ -1,10 +1,6 @@
 import styles from "./styles.module.css";
-import { useState } from "react";
-
-import {HotelOverlay} from "./HotelOverlay.jsx";
 
 export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
-    const [getOverlayOpen, setOverlayOpen] = useState(false)
 
     const redirect = () => {
         if(checkIn === "" || checkOut === ""){
@@ -18,11 +14,9 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
     }
 
     return (
-        <div className={styles.hotel_element}>
-            <li className={styles.listElement} key={hotel.hotelID} onClick={() => redirect()}> 
-                <h1> {hotel.name} </h1>
-                <h2> {hotel.hotelID} </h2>
-            </li>
+        <div className={styles.listElement} key={hotel.hotelID} onClick={() => redirect()}> 
+            <h1> {hotel.name} </h1>
+            <h2> {hotel.hotelID} </h2>
         </div>
     )
 }

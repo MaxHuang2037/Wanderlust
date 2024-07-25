@@ -21,12 +21,8 @@ export const FlightDatePicker = ({flightType, setDepDate, setRetDate, label1, la
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <div className={styles.datePicker}>
-                <DemoContainer components={['DatePicker']}>
-                    <DatePicker id="date-picker" format={"YYYY-MM-DD"} onChange={(date) => setDateDep(date)} label={label1}/>
-                    {flightType === "roundtrip" && <DatePicker format={"YYYY-MM-DD"} onChange={(date) => setDateRet(date)} label={label2}/>}
-                </DemoContainer>
-            </div>
+                <DatePicker className={styles.datePicker} id="date-picker" format={"YYYY-MM-DD"} onChange={(date) => setDateDep(date)} label={label1}/>
+                {flightType === "roundtrip" && <DatePicker className={styles.datePicker} format={"YYYY-MM-DD"} onChange={(date) => setDateRet(date)} label={label2}/>}
         </LocalizationProvider>
     )
 }

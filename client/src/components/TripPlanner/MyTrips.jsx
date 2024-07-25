@@ -19,14 +19,14 @@ export const MyTrips = ({trips, setPlanning}) => {
         <div>
             <h1 className={styles.pageTitle}>My Trips</h1>
             <div className={styles.tripContainer}>
-                <div onClick={() => planningTrip()} className={styles.addTripSection}>
-                    <h1 className={styles.addTripPlus}>+</h1>
-                    <h2 className={styles.addTripText}>Add trip</h2>
-                </div>
                 {trips.map((trip) => {
                     id++
                     return <TripCondensed id={id} trip={trip}/>
                 })}
+                <div onClick={() => planningTrip()} className={styles.addTripSection}>
+                    <h1 className={styles.addTripPlus}>+</h1>
+                    <h2 className={styles.addTripText}>Add trip</h2>
+                </div>
             </div>
         </div>
     )

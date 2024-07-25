@@ -18,7 +18,7 @@
     /* contains mapContainer and hotelList*/
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     width: 73vw;
 }
 
@@ -52,7 +52,7 @@
     background-color: #CDE8E5;
     
     padding: 1rem 2rem 1rem 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 
     box-shadow: 25px 24px 8px -8px rgba(0,0,0,0.1);
@@ -68,6 +68,8 @@
     color: aliceblue;
     border-radius: 1rem;
     width: 100px;
+    margin: 0.5rem;
+    box-sizing: border-box;
     padding: 1rem 0 1rem 0;
     font-size: 20px;
     transition: all 0.25s ease-in;
@@ -79,27 +81,33 @@
 }
 
 .hotelList {
-    width: 20vw;
+    display: flex;
+    flex-direction: column;
     height: 85vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: auto;
+    width: 400px;
+    box-sizing: border-box;
     scrollbar-width: thin;
-    padding-right: 1rem;
+    padding: 0.5rem 0 0 1rem;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .listElement {
     border-radius: 1rem;
-    list-style-type: none;
-
+    margin: 0;
     margin-bottom: 15px;
     background-color: #CDE8E5;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    width: 350px;
+
+    transition: scale 0.25s ease-in;
 }
 
 .listElement:hover {
     cursor: pointer;
-    transform: scale(1.04);
+    scale: 1.05;
 }
 
 .popupContainer {
@@ -139,7 +147,16 @@
     flex-grow: 1;
 }
 
-@media (max-width: 1150px) {
+.loading_img{
+    padding-top: 5rem;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    justify-self: center;
+    margin: auto;
+}
+
+@media (max-width: 1415px) {
     .bottom{
         display: flex;
         flex-direction: column;
@@ -159,7 +176,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
     }
-    .hotel_element{
+    .listElement{
         width: 300px;
     }
 }

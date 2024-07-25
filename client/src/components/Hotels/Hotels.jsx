@@ -8,13 +8,14 @@ import { PassengerDropdown } from '../UniversalComponents/PassengerDropdown.jsx'
 import { CityInput } from '../UniversalComponents/CityInput.jsx'
 
 import styles from "./styles.module.css"
+import loading from "../../images/loading.gif"
 
 const guests = {adult: 0, youth: 0, child: 0, infant: 0}
 const initialCoords = {lat: null, long: null}
 
 export const Hotels = () => {
     const dispatch = useDispatch()
-    const {hotels} = useSelector((state) => state.hotels)
+    const {hotels, hotelState} = useSelector((state) => state.hotels)
     const [coords, setCoords] = useState(initialCoords)
 
     let [checkIn, setCheckIn] = useState("")
@@ -39,6 +40,7 @@ export const Hotels = () => {
             <div className={styles.bottom}>
                 <HotelMap/>
                 <div className={styles.hotelList}>
+                    {hotelState === "p" && <img className={styles.loading_img} src={loading} alt="loading"/>}
                     {
                         hotels.map((hotel) => {
                             return <HotelList hotel={hotel} checkIn={checkIn} checkOut={checkOut} adults={stay.adult}/>

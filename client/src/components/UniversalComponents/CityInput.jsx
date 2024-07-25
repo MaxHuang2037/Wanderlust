@@ -20,7 +20,7 @@ export const CityInput = ({setCoords}) => {
 
     return(
         <div className={styles.parent}>
-            <section className={styles.citiesInput}>
+            <div className={styles.citiesInput}>
                 <input autoComplete="off" className={styles.input} id="city" type="text" placeholder={"City"} onKeyUp={(e) => {
                     if(e.key === "Enter"){
                         dispatch(getCities(document.getElementById("city").value))
@@ -28,7 +28,7 @@ export const CityInput = ({setCoords}) => {
                 }} onChange={() => {
                     dispatch(clearCities())
                 }}/>
-            </section>
+            </div>
             <div className={styles.dropdown}>
             {cities_state === "e" && <h1>No cities found</h1>}
                 {cities.map((data) => {

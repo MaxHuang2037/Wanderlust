@@ -1,5 +1,5 @@
 .datePicker{
-    z-index: 0;
+    box-sizing: border-box;
 }
 
 .input{
@@ -52,6 +52,7 @@
 .citiesInput{
     margin: 0;
     padding: 0;
+    vertical-align: top;
 }
 
 .cityName{
