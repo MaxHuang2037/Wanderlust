@@ -7,7 +7,7 @@
 .section:last-of-type{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .section:first-of-type{
@@ -53,14 +53,15 @@ p{
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     width: 200px;
+    margin: 0.5rem;
 }
 
 .dropdown{
-    margin-top: 5px;
+    margin-left: .5rem;
     border-radius: 1rem;
     position: absolute;
-    overflow-y: scroll;
-    width: 235px;
+    overflow-y: auto;
+    width: 233px;
     max-height: 210px;
     background-color: white;
     scrollbar-width: thin;
@@ -71,7 +72,7 @@ p{
     box-sizing: border-box;
     width: 70vw;
     height: 60vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: thin;
     min-width: 300px;
     margin-top: 2rem;
@@ -148,9 +149,15 @@ p{
     width: 60vw;
     background-color: #CDE8E5;
     border-style: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
     max-height: 90vh;
+}
+
+.flightPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (max-width: 950px){
@@ -174,7 +181,7 @@ p{
     .input_container{
         flex-direction: column;
         align-items: center;
-        width: 90vw;
+        width: 400px;
     }.flight_offers{
         width: 90vw;
     }

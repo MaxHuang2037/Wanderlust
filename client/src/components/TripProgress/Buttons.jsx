@@ -49,9 +49,9 @@ export const Buttons = () => {
 
     return (
         <div className={styles.buttons}>
-            <h3 onClick={() => exit()} className={styles.progress_text}>Exit</h3>
-            {page === 2 ? <h3 onClick={() => nextPage()} className={styles.progress_text}>Save</h3> :
-            <h3 onClick={() => nextPage()} className={styles.progress_text}>Next</h3>}
+            <h3 onClick={() => exit()} className={styles.progress_button}>Exit</h3>
+            {page === 2 ? <h3 onClick={() => nextPage()} className={styles.progress_button}>Save</h3> :
+            <h3 onClick={() => nextPage()} className={styles.progress_button}>Next</h3>}
         </div>
     )
 }

@@ -9,11 +9,16 @@
 .progress_text{
     padding: 0 .5rem 0 .5rem;
     font-weight: normal;
+}
+
+.progress_button{
+    padding: 0 .5rem 0 .5rem;
+    font-weight: normal;
     transition: scale .2s;
 }
 
-.progress_text:hover{
-    scale: 1.1;
+.progress_button:hover{
+    scale: 1.2;
 }
 
 .buttons{
@@ -32,8 +37,9 @@
     padding: 1rem;
     width: 75px;
     transition: scale 0.3s ease-in;
+    align-self: center;
 }
 
 .add_button:hover{
-    scale: 1.1;
+    scale: 1.2;
 }

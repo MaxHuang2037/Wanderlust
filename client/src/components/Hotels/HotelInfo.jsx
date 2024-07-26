@@ -20,7 +20,8 @@ export const HotelInfo = () => {
         const adults = urlParams.get('adults')
         const checkIn = urlParams.get('checkIn')
         const checkOut = urlParams.get('checkOut')
-        dispatch(getHotelOffers({id: id, adults: adults, checkIn: checkIn, checkOut: checkOut}))
+        const name = urlParams.get('name')
+        dispatch(getHotelOffers({id: id, adults: adults, checkIn: checkIn, checkOut: checkOut, name: name}))
     }, [dispatch])
     
     if(singleHotelState === "p") return (<img className={styles.loading_img} src={loading} alt="loading"/>)

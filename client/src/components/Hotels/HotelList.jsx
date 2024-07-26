@@ -10,7 +10,7 @@ export const HotelList = ({hotel, checkIn, checkOut, adults}) => {
             return alert("There must be at least one adult")
         }
 
-        window.location.href =`/hotel?id=${hotel.hotelID}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}`
+        window.location.href =`/hotel?id=${hotel.hotelID}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&name=${hotel.name}`
     }
 
     return (

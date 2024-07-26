@@ -6,9 +6,10 @@ export const Itinerary = ({activities}) => {
         activities.map((activity) => {
             return <div className={styles.activity}>
                         <div className={styles.image_container}>
-                            {activity.pictures.map((image) => {
+                            <img className={styles.activity_picture} src={activity.pictures[0]} alt={activity.name}/>
+                            {/* {activity.pictures.map((image) => {
                                 return <img className={styles.activity_picture} src={image} alt={activity.name}/>
-                            })}
+                            })} */}
                         </div>
                         <div>
                             <h2 className={styles.title}>{activity.name}</h2>

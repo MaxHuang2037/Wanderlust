@@ -34,6 +34,7 @@ export const Hotels = () => {
                 <PassengerDropdown className={styles.people} quantity={stay} setQuantity={setStay} placeholder="guest"/>
                 <button className={styles.searchButton} onClick={() => {
                     dispatch(getHotelListGeo({long: coords.long, lat: coords.lat}))
+                    dispatch(clearHotels())
                 }}>Search</button>
             </div>
 

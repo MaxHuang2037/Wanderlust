@@ -8,7 +8,7 @@ export const Flights = () => {
     const [flightToggle, setFlightToggle] = useState("departure")
 
     return(
-        <div>
+        <div className={styles.flightPage}>
             <FlightInput flightType={flightType} setFlightType={setFlightType} setFlightToggle={setFlightToggle}/>
             {flightType === "roundtrip" &&
                 <div className={styles.roundtrip_toggle}>
