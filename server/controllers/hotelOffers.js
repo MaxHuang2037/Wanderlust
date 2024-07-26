@@ -38,7 +38,7 @@ export const getHotelOffers = async(req, res) => {
         console.log(err.description)
         // res.status(err.description[0].status).json({message: err.description[0].title})
         if (err.description[0].code == 3664) {
-            let hotels = ["The streets", "The parking lot", "The underpass", "The park bench", "The sewers"]
+            let hotels = ["The streets", "The parking lot", "The underpass", "The park bench", "The sewers", "The dumpster", "The back ally", "The subway station", "The woods"]
             let hotel = hotels[Math.floor(Math.random() * hotels.length)]
             let offers = [{date: {checkIn: req.query.checkIn, checkOut: req.query.checkOut}, room: {beds: 1, bedType: "cardboard box", description: "The hotel you were looking for isn't there, you can sleep on the streets instead"}, guests: {adults: req.query.adults, children: 0}, price: 0, currency: "USD", policy: "None"}];
             

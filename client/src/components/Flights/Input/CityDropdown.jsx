@@ -28,7 +28,7 @@ export const CityDropdown = ({type, iataCodes, setIataCodes}) => {
 
     return(
         <div>
-            <section className={styles.citiesInput}>
+            <div className={styles.citiesInput}>
                 <input autoComplete="off" className={styles.input} id={type} type="text" placeholder={ph} onKeyUp={(e) => {
                     if(e.key === "Enter"){
                         dispatch(getAirports({cityName: document.getElementById(type).value, type: type}))
@@ -36,7 +36,7 @@ export const CityDropdown = ({type, iataCodes, setIataCodes}) => {
                 }} onChange={() => {
                     (type === "from") ? dispatch(clearAirportsFrom()) : dispatch(clearAirportsTo())
                 }}/>
-            </section>
+            </div>
             <div className={styles.dropdown}>
                 {((type === "from") && airports_from_state === "e") && <h1>No airports found</h1>}
                 {((type === "to") && airports_to_state === "e") && <h1>No airports found</h1>}
