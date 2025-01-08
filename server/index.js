@@ -8,7 +8,6 @@ import flightRoutes from "./routes/flights.js"
 import hotelRoutes from "./routes/hotels.js"
 import attractionRoutes from "./routes/attractions.js"
 
-// OMGGGGGGG
 dotenv.config()
 
 const app = express()
